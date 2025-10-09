@@ -9,4 +9,5 @@ Hari ini, Rabu 08 oktober 2025, saya belajar:
 <li>membuat struktur fore untuk section contact</li>
 <li>membuat styling untuk section ID #about</li>
 <li>membuat styling untuk section ID #about elemen h2</li>
+<li>membuat styling untuk section ID #about elemen p</li>
 </ol>
