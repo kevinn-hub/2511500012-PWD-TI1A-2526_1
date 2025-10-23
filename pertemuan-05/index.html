@@ -10,6 +10,14 @@
    <script>
     alert("Halo Dunia!");
     </script>
+      <p id="pesan">Teks awal</p>
+      <button onclick="ubahTeks()">Ubah Teks</button>
+      <script>
+      function ubahTeks() {
+      document.getElementById("pesan").innerText = "Teks berhasil diubah!";
+      }
+      </script>
+
     <header>
       <h1>Ini Header</h1>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation"> &#9776; 
