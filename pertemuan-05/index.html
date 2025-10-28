@@ -43,30 +43,33 @@
       
     </section>
 
-   <section id="contact">
-    <h2>Kontak Kami</h2>
-      <form action="" method="GET">
+    <section id="contact">
+      <h2>Kontak Kami</h2>
+      <form id="formKontak">
+        <label>
+          <span>Nama:</span>
+          <input type="text" id="txtNama" name="txtNama" placeholder="Masukkan nama">
+        </label>
 
-      <label for="txtNama"><span>Nama:</span>
-      <input type="text" id="txtNama" name="txtNama" placeholder="Masukkan nama" required
-      autocomplete="name">
-      </label>
+        <label>
+          <span>Email:</span>
+          <input type="email" id="txtEmail" name="txtEmail" placeholder="Masukkan email">
+        </label>
 
-      <label for="txtEmail"><span>Email:</span>
-      <input type="email" id="txtEmail" name="txtEmail" placeholder="Masukkan email" required
-      autocomplete="email">
-      </label>
+        <label>
+          <span>Pesan Anda:</span>
+          <textarea id="txtPesan" name="txtPesan" rows="4" placeholder="Tulis pesan anda..."></textarea>
+        </label>
 
-      <label for="txtPesan"><span>Pesan Anda:</span>
-      <textarea id="txtPesan" name="txtPesan" rows="4" placeholder="Tulis pesan anda..."
-      required></textarea>
-      </label>
-
-      <button type="submit">Kirim</button>
-      <button type="reset">Batal</button>
+        <small id="charCount">0/200 karakter</small>
+        <div class="tombol">
+          <button type="submit">Kirim</button>
+          <button type="reset">Batal</button>
+        </div>
       </form>
-      </section>
-</main>
+    </section>
+
+   </main>
 <footer>
     <p>&copy; 2025 LEONARD KEVIN FERNANDO [2511500012]</p>
   </footer>
