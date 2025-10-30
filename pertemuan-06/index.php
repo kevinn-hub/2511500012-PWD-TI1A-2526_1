@@ -24,12 +24,24 @@
 <main>
     <section id="home">
       <h2>Selamat Datang</h2>
+      <?php
+        echo "halo dunia!<br>";
+        echo "nama saya kevin";
+      ?>
+      
       <p>ini contoh paragraf HTML.</p>
     </section>
 
     <section id="about">
+      <?php
+        $nim = 1234556788;
+        $NIM = "2511500012";
+        $nama = "kevin f\'ernando";
+      ?>
       <h2>Tentang Saya</h2>
-        <p><strong>Nim:</strong>2511500012</p>
+        <p><strong>Nim:</strong><?php
+            echo $NIM;
+            ?></p>
         <p><strong>Nama Lengkap:</strong> Leonard kevin Fernando &#128512;</p>
         <p><strong>Tempat lahir:</strong> Pangkalpinang, &#128197;</p> 
         <p><strong>Tanggal Lahir:</strong> &#127874; 11 juli 2007</p>
