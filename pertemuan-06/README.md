@@ -2,7 +2,7 @@
 
 
 NIM:2511500012<br>
-NAMA: LEONARD KEVIN FERNANDO
+NAMA: LEONARD KEVIN FERNANDO<br>
 hari ini, tanggal 29 oktober 2025, saya belajar:
 <ol>
 <li>hello.php</li>
