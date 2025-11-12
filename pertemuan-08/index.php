@@ -52,8 +52,68 @@ endif;
       <p>Ini contoh paragraf HTML.</p>
     </section>
 
-  <section id="Pendaftaran">
-    <h2>Pendaftaran Profil pengunjung</h2>
+ <section id="form">
+  <h2>Pendaftaran Profil Pengunjung</h2>
+
+  <form action="proses.php" method="POST">
+    <label>
+      <span>NIM:</span>
+      <input type="text" name="nim" placeholder="Masukkan NIM" required>
+    </label>
+
+    <label>
+      <span>Nama Lengkap:</span>
+      <input type="text" name="nama" placeholder="Masukkan nama lengkap" required>
+    </label>
+
+    <label>
+      <span>Tempat Lahir:</span>
+      <input type="text" name="tempat" placeholder="Masukkan tempat lahir" required>
+    </label>
+
+    <label>
+      <span>Tanggal Lahir:</span>
+      <input type="text" name="tgl_lahir" placeholder="masukkan tanggal lahir kamu">
+    </label>
+
+    <label>
+      <span>Hobi:</span>
+      <input type="text" name="hobi" placeholder="Masukkan hobi">
+    </label>
+
+    <label>
+      <span>Pasangan:</span>
+      <input type="text" name="pasangan" placeholder="Masukkan nama pasangan">
+    </label>
+
+    <label>
+      <span>Pekerjaan:</span>
+      <input type="text" name="pekerjaan" placeholder="Masukkan pekerjaan">
+    </label>
+
+    <label>
+      <span>Nama Orang Tua:</span>
+      <input type="text" name="ortu" placeholder="Masukkan nama orang tua">
+    </label>
+
+    <label>
+      <span>Nama Kakak:</span>
+      <input type="text" name="kakak" placeholder="Masukkan nama kakak">
+    </label>
+
+    <label>
+      <span>Nama Adik:</span>
+      <input type="text" name="adik" placeholder="Masukkan nama adik">
+    </label>
+
+    <div class="button-container">
+      <button type="submit">Kirim</button>
+      <button type="reset">Batal</button>
+    </div>
+  </form>
+</section>
+
+
 
     <section id="about">
       <?php

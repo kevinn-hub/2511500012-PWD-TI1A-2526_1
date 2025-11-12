@@ -9,4 +9,11 @@ Kelompok: TI1A<br>
 Proses saya mengerjakan UTS ini sebagai berikut:<br>
 <ol>
   <li>mengunduh bahan uts pwd dielearning.atma.luhur.ac.id, dan di ekstrak di folder pertemuan-08</li>
+  <li>menambahkan section baru dengan judul Pendaftaran Profil Pengunjung (id section dibebaskan), di
+atas section#about (Tentang Saya). Section baru untuk pendaftaran profil pengunjung ini mengikuti
+aturan styling section#contact.</li>
+<li>Pada form pendaftaran profil pengunjung (<form>) buat input: NIM, Nama Lengkap, Tempat Lahir,
+Tanggal Lahir, Hobi, Pasangan, Pekerjaan, Nama Orang Tua, Nama Kakak, dan Nama Adik. Tombol
+Kirim dan Batal mengikuti contoh tombol Kirim dan Batal pada section#contact. Name dan id untuk
+setiap objek input dibebaskan.</li>
 </ol>
