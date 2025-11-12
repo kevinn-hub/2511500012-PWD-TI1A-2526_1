@@ -1,4 +1,54 @@
-/* Styling utama untuk section pendaftaran, about, contact, home */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #333;
+  line-height: 1.5;
+}
+
+header {
+  background: #003366;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+header ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+}
+
+header li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 12px;
+}
+
+header li a:hover {
+  background-color: #85020d;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+header li a:focus {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+header li a:active {
+  background-color: #cc04a1;
+  transform: translateY(1px);
+}
+
 #home,
 #about,
 #pendaftaran,
@@ -12,7 +62,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Judul h2 konsisten */
+
 #home h2,
 #about h2,
 #pendaftaran h2,
@@ -25,7 +75,6 @@
   margin-bottom: 16px;
 }
 
-/* Label, paragraf menggunakan flex */
 #about p,
 #pendaftaran p, 
 #pendaftaran label,
@@ -39,7 +88,6 @@
   border-bottom: 1px solid #e6e6e6;
 }
 
-/* Label span untuk text kanan */
 #about strong,
 #pendaftaran label > span,
 #contact label > span,
@@ -52,7 +100,7 @@
   flex-shrink: 0;
 }
 
-/* Input dan textarea styling */
+
 #contact input,
 #pendaftaran input,
 #pendaftaran textarea,
@@ -69,7 +117,7 @@
   box-sizing: border-box;
 }
 
-/* Tombol styling umum */
+
 #pendaftaran button,
 #contact button,
 #form button {
@@ -84,7 +132,6 @@
   margin-right: 8px;
 }
 
-/* Tombol submit */
 #pendaftaran button[type="submit"],
 #contact button[type="submit"],
 #form button[type="submit"] {
@@ -93,7 +140,7 @@
   font-weight: 600;
 }
 
-/* Tombol reset */
+
 #pendaftaran button[type="reset"],
 #contact button[type="reset"],
 #form button[type="reset"] {
@@ -102,7 +149,6 @@
   font-weight: 500;
 }
 
-/* Hover efek tombol submit */
 #pendaftaran button[type="submit"]:hover,
 #contact button[type="submit"]:hover,
 #form button[type="submit"]:hover {
@@ -111,7 +157,7 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Hover efek tombol reset */
+
 #pendaftaran button[type="reset"]:hover,
 #contact button[type="reset"]:hover,
 #form button[type="reset"]:hover {
@@ -119,8 +165,77 @@
   transform: translateY(-1px);
 }
 
-/* Media query untuk responsif */
+footer {
+  background: #222;
+  color: #aaa;
+  text-align: center;
+  padding: 10px;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+
 @media (max-width: 600px) {
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    left: 16px;
+    top: 8px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    background: #003366;
+    width: 100%;
+    padding: 5px 0;
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  header {
+    padding: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  header h1 {
+    margin: 0 0 8px;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  header ul {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    margin: 8px 0 0;
+  }
+
+  header li a {
+    display: block;
+    padding: 12px 14px;
+    border: 1px solid rgba(255, 255, 255, .35);
+    background: rgba(255, 255, 255, .08);
+    backdrop-filter: saturate(120%);
+  }
+
+  
   #about p,
   #pendaftaran p,
   #pendaftaran label,

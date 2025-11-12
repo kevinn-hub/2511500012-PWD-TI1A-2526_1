@@ -174,3 +174,4 @@ window.addEventListener("resize", () => {
         if (target) alignErrorMessage(small, target);
     });
 });
+
