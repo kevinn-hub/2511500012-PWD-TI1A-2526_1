@@ -22,18 +22,18 @@ $sespesan = $_SESSION["sespesan"] ?? "";
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pendaftaran Profil Pengunjung</title>
+  <title>judul halaman</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <header>
-    <h1>Website Profil Pengunjung</h1>
+    <h1>ini header</h1>
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">&#9776;</button>
     <nav>
       <ul>
         <li><a href="#home">Beranda</a></li>
-        <li><a href="#form">Pengunjung</a></li>
+        <li><a href="#form">Profile</a></li>
         <li><a href="#about">Tentang</a></li>
         <li><a href="#contact">Kontak</a></li>
       </ul>
@@ -44,7 +44,7 @@ $sespesan = $_SESSION["sespesan"] ?? "";
     
     <section id="home">
       <h2>Selamat Datang</h2>
-      <p>Halo dunia!<br>Nama saya Dika 😎</p>
+      <p>Halo dunia!<br>Nama saya Leonard kevin fernando 😎</p>
       <p>Ini adalah halaman profil pengunjung berbasis PHP.</p>
     </section>
 
@@ -152,7 +152,7 @@ $sespesan = $_SESSION["sespesan"] ?? "";
   </main>
 
   <footer>
-    <p>&copy; 2025 Dika Yansah [2511500018]</p>
+    <p>&copy; 2025 Leonard kevin Fernando [2511500018]</p>
   </footer>
 
   <script src="script.js"></script>

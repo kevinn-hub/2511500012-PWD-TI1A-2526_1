@@ -16,4 +16,8 @@ aturan styling section#contact.</li>
 Tanggal Lahir, Hobi, Pasangan, Pekerjaan, Nama Orang Tua, Nama Kakak, dan Nama Adik. Tombol
 Kirim dan Batal mengikuti contoh tombol Kirim dan Batal pada section#contact. Name dan id untuk
 setiap objek input dibebaskan.</li>
+<li>Saat tombol Kirim diklik (nama untuk file action proses dibebaskan), data dari form pendaftaran
+profil pengunjung dikirim dengan method POST, kemudian ditampilkan ke section#about sesuai dari
+input penguna (contoh, jika pada input NIM diketik pengguna “0344300002”, maka pada
+section#about bagian NIM akan bernilai “0344300002”).</li>
 </ol>
