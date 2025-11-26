@@ -12,7 +12,9 @@
   <li>menambahkan kode untuk menampilkan array menggunakan looping foreach di bagian section aboutt</li>
   <li>menambahkan file baru namanya fungsi .php</li>
   <li>menambahkan fungsi.php untuk menghasilkan tanggal dalam format 2 digit tanggal, 3 digit nama bulan,
-dan 4 digit tahun.</li>
+  dan 4 digit tahun.</li>
+  <li>menambahkan kode function tampil biodata untuk merender hasil output biodata</li>
+
 
 
 
