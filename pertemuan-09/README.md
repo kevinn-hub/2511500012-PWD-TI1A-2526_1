@@ -8,8 +8,9 @@
   <li>mengubah bagian di baris kode(20-32) di proses.php </li>
   <li>menghapus baris (23-32),lalu menggantinya dengan$_SESSION[biodata] = $arrBiodata; header    (location:index.php#contact);</li>
   <li>membuka file proses.php di foleder pertemuan-09</li>
-  <li>menghapus baris kode 19-67 di index.html</li>
+  <li>menghapus bariss kode 19-67 di index.html</li>
   <li>menambahkan kode untuk menampilkan array menggunakan looping foreach di bagian section about</li>
+
 
 
 
