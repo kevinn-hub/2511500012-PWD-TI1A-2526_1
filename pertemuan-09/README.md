@@ -4,7 +4,7 @@
  HARI INI RABU,26 NOVEMBER 2025 SAYA MEMPELAJARI:
 <ol>
   <li>membuka file proses.php di foleder pertemuan-09</li>
-  <li>mengubah bagian di baris kode(10-19) menjadi bentuk array associative</li>
+  <li>mengubah bagian di baris kode(10-19) menjadi bentuk array associativee</li>
 
 
   <li>Hasil UTS untuk bahan pertemuan-09</li>
