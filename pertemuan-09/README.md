@@ -14,6 +14,7 @@
   <li>menambahkan fungsi.php untuk menghasilkan tanggal dalam format 2 digit tanggal, 3 digit nama bulan,
   dan 4 digit tahun.</li>
   <li>menambahkan kode function tampil biodata untuk merender hasil output biodata</li>
+  <li>buka file di index.php untuk mengganti code di baris (123-129)</li>
 
 
 
