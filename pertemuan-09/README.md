@@ -15,6 +15,7 @@
   dan 4 digit tahun.</li>
   <li>menambahkan kode function tampil biodata untuk merender hasil output biodata</li>
   <li>buka file di index.php untuk mengganti code di baris (123-129)</li>
+  <li>di bagian atas file index.html tambahkan kode requere_once mengikuti file dari fungsi.php</li>
 
 
 
