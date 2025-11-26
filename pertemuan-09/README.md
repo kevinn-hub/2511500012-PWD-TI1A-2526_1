@@ -5,7 +5,10 @@
 <ol>
   <li>membuka file proses.php di foleder pertemuan-09</li>
   <li>mengubah bagian di baris kode(10-19) menjadi bentuk array associativee</li>
-  <li>mengubah bagian di baris kode(20-32) </li>
+  <li>mengubah bagian di baris kode(20-32) di proses.php </li>
+  <li>menghapus baris (23-32),lalu menggantinya dengan$_SESSION["biodata"] = $arrBiodata;
+      header("location: index.php#contact");  
+   </li>
 
 
   <li>Hasil UTS untuk bahan pertemuan-09</li>
