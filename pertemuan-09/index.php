@@ -24,19 +24,29 @@ endif;
 $biodata = $_SESSION["biodata"] ?? [];
 
 $fieldConfig = [
-  "nim" => ["label" => "NIM;", "suffix" => ""],
-  "nama" => ["label" => "Nama Lengkap;", "suffix" => "&#128526;"],
-  "tempat" => ["label" => "Tempat Lahir;", "suffix" => ""],
-  "tanggal" => ["label" => "Tanggal Lahir;", "suffix" => ""],
-  "hobi" => ["label" => "Hobi;", "suffix" => " &#127926;"],
-  "pasangan" => ["label" => "pasangan;", "suffix" => "&#hearts;"],
-  "pekerjaan" => ["label" => "pekerjaan;", "suffix" => "&copy;2025"],
-  "ortut" => ["label" => "Nama Orang Tua;", "suffix" => ""],
-  "kakak" => ["label" => "Nama Kakak;", "suffix" => ""],
-  "adik" => ["label" => "Nama Adik;", "suffix" => ""], 
+  "nim" => ["label" => "NIM:", "suffix" => ""],
+  "nama" => ["label" => "Nama Lengkap:", "suffix" => "&#128526;"],
+  "tempat" => ["label" => "Tempat Lahir:", "suffix" => ""],
+  "tanggal" => ["label" => "Tanggal Lahir:", "suffix" => ""],
+  "hobi" => ["label" => "Hobi:", "suffix" => " &#127926;"],
+  "pasangan" => ["label" => "pasangan:", "suffix" => "&#9829;"],
+  "pekerjaan" => ["label" => "pekerjaan:", "suffix" => "&copy;2025"],
+  "ortu" => ["label" => "Nama Orang Tua:", "suffix" => ""],
+  "kakak" => ["label" => "Nama Kakak:", "suffix" => ""],
+  "adik" => ["label" => "Nama Adik:", "suffix" => ""], 
 ];
-?>
 
+$contact = $_SESSION["contact"] ?? [];
+
+$contactconfig = [
+   "nama" => ["label" => "Nama:", "suffix" => ""],
+    "email" => ["label" => "Email:", "suffix" => "&#128526;"],
+    "pesan" => ["label" => "Pesan:", "suffix" => ""],
+]
+
+
+
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -148,16 +158,12 @@ $fieldConfig = [
         <button type="submit">Kirim</button>
         <button type="reset">Batal</button>
       </form>
-
-      <?php if (!empty($sesnama)): ?>
+      <?php if (!empty($_SESSION["contact"])): ?>
         <br><hr>
-        <h2>Yang menghubungi kami</h2>
-        <p><strong>Nama :</strong> <?php echo $sesnama ?></p>
-        <p><strong>Email :</strong> <?php echo $sesemail ?></p>
-        <p><strong>Pesan :</strong> <?php echo $sespesan ?></p>
-      <?php endif; ?>
-
-
+        <h2>yang menghubungi kami</h2>
+     <?= tampilkanBiodata($contactconfig,$contact); ?>
+     <?php unset($_SESSION["contact"]);?>
+     <?php endif; ?>
 
     </section>
   </main>
