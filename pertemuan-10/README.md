@@ -7,4 +7,6 @@ Hari ini rabu 3 Desember 2025 saya belajar:
 <ol>
 <li>mengekstrak folder bahan ajar pertemuan 10 </li>
 <li>membuka localhost/phpmyadmin dan membuat nama database</li>
+<li>membuat tabel tbl_tamu yang akan menyimpan data
+dari form contact.</li>
 </ol>
