@@ -160,7 +160,7 @@ $contactconfig = [
       </form>
       <?php if (!empty($_SESSION["contact"])): ?>
         <br><hr>
-        <h2>terima kasih telah menghubungi kami</h2>
+        <h2>terima kasih telah menghubungii kami</h2>
      <?= tampilkanBiodata($contactconfig,$contact); ?>
      <?php unset($_SESSION["contact"]);?>
      <?php endif; ?>
