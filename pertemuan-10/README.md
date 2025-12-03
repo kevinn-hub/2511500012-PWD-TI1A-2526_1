@@ -14,5 +14,5 @@ dari form contact.</li>
 <li>tbl_menu akan diisi dan di tampilkan data di bagian insert</li>
 <li>Lihat tbl_data menu di local host masing - masing apakah sudah muncul </li>
 <li>Duplikat file read.php, dan hasil duplikat rename menjadi read_inc.php.</li>
-<li>read_inc.php di modif lalu dibagian index.php di ganti bagian section contact yang paling bawah/li>
+<li>read_inc.php di modif lalu dibagian index.php di ganti bagian section contact yang paling bawah</li>
 </ol>
