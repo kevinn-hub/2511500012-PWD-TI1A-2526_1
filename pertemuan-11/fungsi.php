@@ -1,7 +1,8 @@
 <?php
-function bersihkan($str)
+function redirect_ke($url)
 {
-  return htmlspecialchars(trim($str));
+  header ("location: " . $url);
+  exit();
 }
 
 function tidakKosong($str)
