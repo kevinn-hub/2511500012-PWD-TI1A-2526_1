@@ -108,6 +108,14 @@ require_once __DIR__ . '/fungsi.php';
       <h2>Tentang Saya</h2>
       <?= tampilkanBiodata($fieldConfig, $biodata) ?>
     </section>
+     
+      <?php
+      $flash_sukses = $_SESSION['flash_sukses'] ??''; #query sukses
+      $flash_eror = $_SESSION['flash_eror'] ??''; #query eror
+      $old= $_SESSION['old'] ??''; # nilai lama form
+
+      unset($_SESSION['flash_sukses'], $_SESSION['flash_eror'],$_SESSION['old']);
+      ?>
 
     <section id="contact">
       <h2>Kontak Kami</h2>
