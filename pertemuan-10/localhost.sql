@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 03, 2025 at 05:36 AM
+-- Generation Time: Dec 11, 2025 at 01:50 PM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -37,6 +37,15 @@ CREATE TABLE `tbl_tamu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `tbl_tamu`
+--
+
+INSERT INTO `tbl_tamu` (`cid`, `cnama`, `cemail`, `cpesan`) VALUES
+(1, 'Leonard Kevin Fernando', '2511500012@mahasiswa.atmaluhur.ac.id', 'ayo yang teliti belajar pemrograman dasarnya,jangan kebanyakan typo'),
+(2, 'Alexsande Morgan Des Passito', 'Alexsander Morgan @gmail.com', 'Syalom'),
+(3, 'Marsen Sitepu', 'Marsen@gmail.com', 'Selamat sore semuanya');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -54,7 +63,7 @@ ALTER TABLE `tbl_tamu`
 -- AUTO_INCREMENT for table `tbl_tamu`
 --
 ALTER TABLE `tbl_tamu`
-  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
