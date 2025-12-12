@@ -14,6 +14,11 @@ function formatTanggal($tgl)
 {
   return date("d M Y", strtotime($tgl));
 }
+function bersihkan($str)
+{
+  return htmlspecialchars(trim($str), ENT_QUOTES, 'UTF-8');
+}
+
 
 function tampilkanBiodata($conf, $arr)
 {

@@ -108,54 +108,52 @@ require_once __DIR__ . '/fungsi.php';
       <h2>Tentang Saya</h2>
       <?= tampilkanBiodata($fieldConfig, $biodata) ?>
     </section>
-     
-      <?php
-      $flash_sukses = $_SESSION['flash_sukses'] ??''; #query sukses
-      $flash_eror = $_SESSION['flash_eror'] ??''; #query eror
-      $old= $_SESSION['old'] ??''; # nilai lama form
 
-      unset($_SESSION['flash_sukses'], $_SESSION['flash_eror'],$_SESSION['old']);
-      ?>
+    <?php
+    $flash_sukses = $_SESSION['flash_sukses'] ?? '';
+    $flash_eror = $_SESSION['flash_eror'] ?? '';
+    $old = $_SESSION['old'] ?? [];
+
+    unset($_SESSION['flash_sukses'], $_SESSION['flash_eror'], $_SESSION['old']);
+    ?>
 
     <section id="contact">
       <h2>Kontak Kami</h2>
 
-      <?php if (!empty($flash_sukses)); ?>
-      <div style="padding:10px; margin-bottom:10px; background:#d4edda; color:#155724; border-radius:6px">
-        <?= $flash_sukses;?>
+      <?php if (!empty($flash_sukses)): ?>
+        <div style="padding:10px; margin-bottom:10px; background:#d4edda; color:#155724; border-radius:6px">
+          <?= $flash_sukses; ?>
         </div>
-        <?php endif; ?>
+      <?php endif; ?>
 
-        <?php if (!empty($flash_eror)); ?>
-         <div style="padding:10px; margin-bottom:10px; background:#f8d7da; color:#721c24; border-radius:6px">
-        <?= $flash_eror;?>
+      <?php if (!empty($flash_eror)): ?>
+        <div style="padding:10px; margin-bottom:10px; background:#f8d7da; color:#721c24; border-radius:6px">
+          <?= $flash_eror; ?>
         </div>
-        <?php endif; ?>
+      <?php endif; ?>
 
       <form action="proses.php" method="POST">
 
         <label for="txtNama"><span>Nama:</span>
-          <input type="text" id="txtNama" name="txtNama" placeholder="Masukkan nama" required autocomplete="name">
-            value="<?= isset($old['nama']) ? htmlspecialchars($old['nama']) : '' ?>">
+          <input type="text" id="txtNama" name="txtNama" placeholder="Masukkan nama" required autocomplete="name"
+                 value="<?= isset($old['nama']) ? htmlspecialchars($old['nama']) : '' ?>">
         </label>
 
         <label for="txtEmail"><span>Email:</span>
-          <input type="email" id="txtEmail" name="txtEmail" placeholder="Masukkan email" required autocomplete="email">
-            value="<?= isset($old['email']) ? htmlspecialchars($old['email']) : '' ?>">
-        </label>
+          <input type="email" id="txtEmail" name="txtEmail" placeholder="Masukkan email" required autocomplete="email"
+                 value="<?= isset($old['email']) ? htmlspecialchars($old['email']) : '' ?>">
         </label>
 
         <label for="txtPesan"><span>Pesan Anda:</span>
-          <textarea id="txtPesan" name="txtPesan" rows="4" placeholder="Tulis pesan anda..." required></textarea>
-            value="<?= isset($old['pesan']) ? htmlspecialchars($old['pesan']) : '' ?>">
-             <small id="charCount">0/200 karakter</small>
+          <textarea id="txtPesan" name="txtPesan" rows="4" placeholder="Tulis pesan anda..." required><?= 
+            isset($old['pesan']) ? htmlspecialchars($old['pesan']) : '' 
+          ?></textarea>
+          <small id="charCount">0/200 karakter</small>
         </label>
-         
-    
+
         <button type="submit">Kirim</button>
         <button type="reset">Batal</button>
       </form>
-
 
       <br>
       <hr>
