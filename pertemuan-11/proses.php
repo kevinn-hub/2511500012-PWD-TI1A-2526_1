@@ -14,9 +14,6 @@ $nama  = bersihkan($_POST["txtNama"] ?? "");
 $email = bersihkan($_POST["txtEmail"] ?? "");
 $pesan = bersihkan($_POST["txtPesan"] ?? "");
 
-
-
-
 $errors = [];
 
 if ($nama === '') {
