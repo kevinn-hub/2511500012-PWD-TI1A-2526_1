@@ -68,15 +68,15 @@ mysqli_stmt_close($stmt);
 
 $arrBiodata = [
     "nim"       => $_POST["txtNim"] ?? "",
-    "nama"      => $_POST["txtNmLengkap"] ?? "",
-    "tempat"    => $_POST["txtT4Lhr"] ?? "",
-    "tanggal"   => $_POST["txtTglLhr"] ?? "",
+    "nama"      => $_POST["txtNamaLengkap"] ?? "",
+    "tempat"    => $_POST["txtTempatLahir"] ?? "",
+    "tanggal"   => $_POST["txtTangglahir"] ?? "",
     "hobi"      => $_POST["txtHobi"] ?? "",
     "pasangan"  => $_POST["txtPasangan"] ?? "",
     "pekerjaan" => $_POST["txtKerja"] ?? "",
-    "ortu"      => $_POST["txtNmOrtu"] ?? "",
-    "kakak"     => $_POST["txtNmKakak"] ?? "",
-    "adik"      => $_POST["txtNmAdik"] ?? ""
+    "ortu"      => $_POST["txtNamaOrtu"] ?? "",
+    "kakak"     => $_POST["txtNamaKakak"] ?? "",
+    "adik"      => $_POST["txtNamaAdik"] ?? ""
 ];
 
 $_SESSION["biodata"] = $arrBiodata;
