@@ -1,7 +1,7 @@
 # pertemuan-10
 
-NAMA  : LEONARD KEVIN FERNANDO
-NIM   : 2511500012
+NAMA  : LEONARD KEVIN FERNANDO<br>
+NIM   : 2511500012<br>
 
 Hari ini rabu 10 Desember 2025 saya belajar:
 <ol>
