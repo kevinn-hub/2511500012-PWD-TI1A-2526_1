@@ -15,5 +15,5 @@ Hari ini rabu 10 Desember 2025 saya belajar:
 3.membuat validasi(kosong/enggak)</li>
 <li> lalu di proses.php insert_tbl menu diisi statment mysqli,dan pesan yang sukses atau gagal aka ke session redirect dan balik ke index.php#contact</li>
 <li>tambahin field baru di tbl_tamu
-1.tambah kolom created at </li>
+1.tambah kolom created att</li>
 </ol>
