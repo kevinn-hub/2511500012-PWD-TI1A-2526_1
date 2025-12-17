@@ -7,4 +7,5 @@ hari ini rabu 17 Desember 2025 saya belajar:
 <ol>
 <li>menggunakan hasil latihan folder pertemuan-11 sebagai latihan pertemuan-12</li>
 <li>menambahkan tombol edit di read.php</li>
+<li>menambahkan penampil flash sukses dan eror menggunakan session pada read.php</li>
 </ol>

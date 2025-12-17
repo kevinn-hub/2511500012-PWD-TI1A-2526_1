@@ -1,5 +1,6 @@
 <?php
 require 'koneksi.php';
+require 'fungsi.php';
 
 $sql = "SELECT * FROM tbl_tamu ORDER BY cid DESC";
 $q = mysqli_query($conn, $sql);
@@ -10,6 +11,28 @@ if (!$q) {
 
 $no = 1;
 ?>
+
+<?php
+$flash_sukses = $_SESSION['flash_sukses'] ?? '';
+$flash_eror = $_SESSION['flash_eror'] ?? '';
+unset($_SESSION['flash_sukses'],$_SESSION['flash_eror']);
+?>
+
+<?php if (!empty(flash_sukses)): ?>
+    <div style="padding:10px; margin-bottom:10px;
+      background:#d4edda; color:#155724; border-radius:6px;">
+      <?= $flash_sukses; ?>
+    </div>
+<?php endif;?>
+
+<?php if (!empty(flash_eror)): ?>
+    <div style="padding:10px; margin-bottom:10px;
+      background:#f8d7da; color:#721c24; border-radius:6px;">
+      <?= $flash_eror; ?>
+    </div>
+<?php endif;?>
+
+
 <table border="1" cellpadding="8" cellspacing="0">
 <tr>
   <th>No</th>
