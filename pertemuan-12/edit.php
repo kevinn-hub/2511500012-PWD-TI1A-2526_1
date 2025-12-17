@@ -3,50 +3,49 @@ session_start();
 require 'koneksi.php';
 require 'fungsi.php';
 
-$cid = filter_input(input_get,'cid',filter_validate_int,[
+$cid = filter_input(INPUT_GET, 'cid', FILTER_VALIDATE_INT, [
   'options' => ['min_range' => 1]
 ]);
 
 if (!$cid) {
-  $_SESSION['flash_eror'] = 'akses tidak valid.';
-  redirect_ke('read.php');
+    $_SESSION['flash_error'] = 'akses tidak valid.';
+    redirect_ke('read.php');
 }
 
-$stmt = mysqli_prepare($con,"select cid,cnama,cemail,cpesan
-from tbl_tamu where cid = ? limit 1");
+$stmt = mysqli_prepare($conn, "SELECT cid, cnama, cemail, cpesan FROM tbl_tamu WHERE cid = ? LIMIT 1");
 
-if (!stmt) {
-    $_SESSION['flash_eror'] = 'Query tidak benar.';
-  redirect_ke('read.php');
+if (!$stmt) {
+    $_SESSION['flash_error'] = 'Query tidak benar.';
+    redirect_ke('read.php');
 }
 
-mysql_stmt_bind_param($stmt,"i",$cid);
-mysql_stmt_excute($stmt);
-$res = mysql_stmt_get_result($stmt);
+mysqli_stmt_bind_param($stmt, "i", $cid);
+mysqli_stmt_execute($stmt);
+$res = mysqli_stmt_get_result($stmt);
 $row = mysqli_fetch_assoc($res);
-mysql_stmt_close($stmt);
+mysqli_stmt_close($stmt);
 
 if (!$row) {
-    $_SESSION['flash_eror'] = 'Record tidak ditemukan.';
-  redirect_ke('read.php');
+    $_SESSION['flash_error'] = 'Record tidak ditemukan.';
+    redirect_ke('read.php');
 }
 
 $nama = $row['cnama'] ?? '';
 $email = $row['cemail'] ?? '';
 $pesan = $row['cpesan'] ?? '';
 
-$flash_eror = $_SESSION['flash_eror'] ?? '';
+$flash_error = $_SESSION['flash_error'] ?? '';
 $old = $_SESSION['old'] ?? [];
-unset($_SESSION['flash_eror'], $_SESSION['old'])
+unset($_SESSION['flash_error'], $_SESSION['old']);
 
-if(!empty($old)) {
-  $nama = $old['nama'] ?? $nama;
-  $email = $old['email'] ?? $email;
-  $pesan = $old['pesan'] ?? $pesan;
-  }
-  ?>
+if (!empty($old)) {
+    $nama = $old['nama'] ?? $nama;
+    $email = $old['email'] ?? $email;
+    $pesan = $old['pesan'] ?? $pesan;
+}
+?>
 
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -77,56 +76,39 @@ if(!empty($old)) {
     <h2>Edit Buku Tamu</h2>
 
     <?php if (!empty($flash_error)): ?>
-        <div style="
-            padding:10px;
-            margin-bottom:10px;
-            background:#f8d7da;
-            color:#721c24;
-            border-radius:6px;">
+        <div style="padding:10px;margin-bottom:10px;background:#f8d7da;
+            color:#721c24; border-radius:6px;">
             <?= $flash_error; ?>
         </div>
     <?php endif; ?>
 
     <form action="proses_update.php" method="POST">
 
-        <input type="text" name="cid" value="<?= (int)$cid; ?>">
+        <input type="hidden" name="cid" value="<?= (int)$cid; ?>">
 
         <label for="txtNama">
             <span>Nama:</span>
-            <input type="text"
-                   id="txtNama"
-                   name="txtNamaEd"
-                   placeholder="Masukkan nama"
-                   required
-                   autocomplete="name"
+            <input type="text" id="txtNama" name="txtNamaEd" placeholder="Masukkan nama"
+                   required autocomplete="name"
                    value="<?= !empty($nama) ? $nama : ''; ?>">
         </label>
 
         <label for="txtEmail">
             <span>Email:</span>
-            <input type="email"
-                   id="txtEmail"
-                   name="txtEmailEd"
-                   placeholder="Masukkan email"
-                   required
-                   autocomplete="email"
+            <input type="email" id="txtEmail" name="txtEmailEd" placeholder="Masukkan email"
+                   required autocomplete="email"
                    value="<?= !empty($email) ? $email : ''; ?>">
         </label>
 
         <label for="txtPesan">
             <span>Pesan Anda:</span>
-            <textarea id="txtPesan"
-                      name="txtPesanEd"
-                      rows="4"
+            <textarea id="txtPesan" name="txtPesanEd" rows="4"
                       placeholder="Tulis pesan anda..."
                       required><?= !empty($pesan) ? $pesan : ''; ?></textarea>
         </label>
 
-        <label for="txtCaptcha">
-            <span>Captcha 2 × 3 = ?</span>
-            <input type="number"
-                   id="txtCaptcha"
-                   name="txtCaptcha"
+        <label for="txtCaptcha"><span>Captcha 2 x 3 = ?</span>
+            <input type="number" id="txtCaptcha" name="txtCaptcha"
                    placeholder="Jawab Pertanyaan..."
                    required>
         </label>
