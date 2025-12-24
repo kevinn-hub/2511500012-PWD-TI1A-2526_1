@@ -47,6 +47,7 @@
       <td><?= $i++ ?></td>
       <td>
         <a href="edit.php?cid=<?= (int)$row['cid']; ?>">Edit</a>
+        <a href="proses_delete.php">delete</a>
       </td>
       <td><?= $row['cid']; ?></td>
       <td><?= htmlspecialchars($row['cnama']); ?></td>
