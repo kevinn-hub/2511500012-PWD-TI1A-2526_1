@@ -10,4 +10,5 @@ hari ini rabu 17 Desember 2025 saya belajar:
 <li>file proses_update.php di copy ke proses_delete.php</li>
 <li>menyesuaikan/mengubah kode di proses_delete.php </li>
 <li>menambahkan parameter cid untuk link delete di read.php</li>
+<li>memperbaiki proses_delete.php agar menggunakan parameter cid</li>
 </ol>
