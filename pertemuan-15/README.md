@@ -8,4 +8,5 @@ hari ini rabu 7 Januari 2026 saya belajar:
 <ol>
 <li>mengecopy dan paste file pertemuan-13 ke file pertemuan-15</li>
 <li>membuat tabel baru dengan nama tbl_mahasiswa di database db_pwd2025</li>
+<li>mengcopy isi file read.php dan rename menjadi read_biodata.php</li>
 </ol>
