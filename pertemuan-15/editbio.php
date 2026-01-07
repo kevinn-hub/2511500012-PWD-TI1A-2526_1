@@ -58,7 +58,7 @@
   }
 
   #Nilai awal (prefill form)
- $nim          = $row["enim"] ?? '';
+  $nim          = $row["enim"] ?? '';
   $namaLengkap  = $row["enamlengkap"] ?? '';
   $tempatLahir  = $row["etempatlahir"] ?? '';
   $tanggalLahir = $row["etanggallahir"] ?? '';
@@ -75,7 +75,6 @@
   $old = $_SESSION['old'] ?? [];
   unset($_SESSION['flash_error'], $_SESSION['old']);
   if (!empty($old)) {
- if (!empty($old)) {
   $nim          = $old['txtNim'] ?? $nim;
   $namaLengkap  = $old['txtNmLengkap'] ?? $namaLengkap;
   $tempatLahir  = $old['txtT4Lhr'] ?? $tempatLahir;
@@ -87,8 +86,6 @@
   $namaKakak    = $old['txtNmKakak'] ?? $namaKakak;
   $namaAdik     = $old['txtNmAdik'] ?? $namaAdik;
 }
-
-    }
 ?>
 
 <!DOCTYPE html>
