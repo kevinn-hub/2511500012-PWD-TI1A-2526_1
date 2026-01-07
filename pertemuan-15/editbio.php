@@ -132,7 +132,7 @@
 
                 <label for="txtNim"><span>NIM:</span>
           <input type="text" id="txtNim" name="txtNim" placeholder="Masukkan NIM" required
-                value="<?= !empty($nim) ? htmlspecialchars($nim) : '' ?>">
+                value="<?= !empty($nim) ? htmlspecialchars($nim) : '' ?>" readonly>
         </label>
 
         <label for="txtNmLengkap"><span>Nama Lengkap:</span>
@@ -182,7 +182,7 @@
 
        
 
-          <button type="submit">Kirim</button>
+          <button type="submit">update</button>
           <button type="reset">Batal</button>
           <a href="bioread.php" class="reset">Kembali</a>
         </form>
