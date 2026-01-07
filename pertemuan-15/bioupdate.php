@@ -35,7 +35,7 @@ $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "ssssssssssi", $nim, $namaLengkap, $tempatLahir, $tanggalLahir, $hobi, $pasangan, $pekerjaan, $namaOrtu, $namaKakak, $namaAdik, $eid);
 
 if (mysqli_stmt_execute($stmt)) {
-    $_SESSION['flash_sukses'] = "Data berhasil diperbarui.";
+    $_SESSION['flash_sukses'] = "Terimakasih, Data anda berhasil diperbarui.";
     redirect_ke("bioread.php"); // Kembali ke read
 } else {
     $_SESSION['flash_error'] = "Gagal memperbarui data.";
