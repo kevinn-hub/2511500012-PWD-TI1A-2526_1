@@ -3,7 +3,7 @@
   require 'koneksi.php';
   require 'fungsi.php';
 
-  $sql = "SELECT * FROM tbl_tamu ORDER BY cid DESC";
+  $sql = "SELECT * FROM tbl_mahasiswa ORDER BY eid DESC";
   $q = mysqli_query($conn, $sql);
   if (!$q) {
     die("Query error: " . mysqli_error($conn));
@@ -32,15 +32,21 @@
 <?php endif; ?>
 
 <table border="1" cellpadding="8" cellspacing="0">
-  <tr>
-    <th>No</th>
-    <th>Aksi</th>
-    <th>ID</th>
-    <th>Nama</th>
-    <th>Email</th>
-    <th>Pesan</th>
-    <th>Created At</th>
-  </tr>
+    <tr>
+      <th>No</th>
+      <th>Aksi</th>
+      <th>ID</th>
+      <th>Nim</th>
+      <th>Nama Lengkap</th>
+      <th>Tanggal lahir</th>
+      <th>Tempat Lahir</th>
+      <th>hobi</th>
+      <th>pasangan</th>
+      <th>Nama Orang Tua</th>
+      <th>Nama kakak</th>
+      <th>Nama adik</th>
+      <th>Created At</th>
+    </tr>
   <?php $i = 1; ?>
   <?php while ($row = mysqli_fetch_assoc($q)): ?>
     <tr>
@@ -49,11 +55,24 @@
         <a href="edit.php?cid=<?= (int)$row['cid']; ?>">Edit</a>
         <a onclick= "return confirm('Hapus <?= htmlspecialchars($row['cnama']); ?>?')" href="proses_delete.php?cid=<?= (int)$row['cid']; ?>">Delete</a>
       </td>
-      <td><?= $row['cid']; ?></td>
-      <td><?= htmlspecialchars($row['cnama']); ?></td>
-      <td><?= htmlspecialchars($row['cemail']); ?></td>
-      <td><?= nl2br(htmlspecialchars($row['cpesan'])); ?></td>
+      <td><?= $row['eid']; ?></td>
+      <td><?= htmlspecialchars($row['enim']); ?></td>
+      <td><?= htmlspecialchars($row['enamalengkap']); ?></td>
+      <td><?= htmlspecialchars($row['etempatllahir']); ?></td>
+      <td><?= htmlspecialchars($row['etanggallahir']); ?></td>
+      <td><?= htmlspecialchars($row['ehobi']); ?></td>
+      <td><?= htmlspecialchars($row['epasangan']); ?></td>
+      <td><?= htmlspecialchars($row['epekerjaan']); ?></td>
+      <td><?= htmlspecialchars($row['enamortu']); ?></td>
+      <td><?= htmlspecialchars($row['enamakakak']); ?></td>
+      <td><?= htmlspecialchars($row['enamadik']); ?></td>
       <td><?= formatTanggal(htmlspecialchars($row['dcreated_at'])); ?></td>
     </tr>
   <?php endwhile; ?>
 </table>
+
+<?php
+if (!$q) {
+  die("Query eror: " . mysqli_error($conn));
+}
+?>
