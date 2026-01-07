@@ -12,4 +12,5 @@ hari ini rabu 7 Januari 2026 saya belajar:
 <li>menyesuaikan dan menambahkan isi read_biodata.php agar sesuai dengan tbl_mahasiswa</li>
 <li>mengcopy isi file read_inc.php, lalu buat file baru read_inc_biodata</li>
 <li>menyesuaikan isi file read_inc.php ke isi file read_inc_biodata.php</li>
+<li>menghapus $fieldconfig di index.php karena sudah tidak digunakan,dan dibagian section about diganti menjadi file read_inc_biodata.php</li>
 </ol>
