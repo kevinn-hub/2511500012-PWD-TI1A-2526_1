@@ -13,4 +13,7 @@ hari ini rabu 7 Januari 2026 saya belajar:
 <li>mengcopy isi file read_inc.php, lalu buat file baru read_inc_biodata</li>
 <li>menyesuaikan isi file read_inc.php ke isi file read_inc_biodata.php</li>
 <li>menghapus $fieldconfig di index.php karena sudah tidak digunakan,dan dibagian section about diganti menjadi file read_inc_biodata.php</li>
+<li>mengcopy+paste boleh satu-satu atau langsung tiga proses_update,proses_delete,proses.php dan di rename sesuka hati misalnya biodelete,update, dan proses, lalu kita menyesuaikan dengan biodata sederhana </li>
+<li>mengcopy+paste file edit.php dan direname menjadi editbio.php, code dalam menyesuaikan biodata</li>
+<li>fungsi kalau bisa diubah atau diganti bisa kemungkinan</li>
 </ol>
