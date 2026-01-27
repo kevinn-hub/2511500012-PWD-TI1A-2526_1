@@ -2,9 +2,9 @@
 -- version 5.2.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Dec 24, 2025 at 01:23 AM
--- Server version: 8.0.30
+-- Host: localhost
+-- Generation Time: Jan 27, 2026 at 07:17 AM
+-- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -20,8 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_pwd2025`
 --
-CREATE DATABASE IF NOT EXISTS `db_pwd2025` DEFAULT CHARACTER SET utf8mb4 ;
-USE `db_pwd2025`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_biodata`
+--
+
+CREATE TABLE `tbl_biodata` (
+  `eid` int(11) NOT NULL,
+  `enim` varchar(50) DEFAULT NULL,
+  `enamlengkap` varchar(100) DEFAULT NULL,
+  `etempatlahir` varchar(50) DEFAULT NULL,
+  `etanggallahir` date DEFAULT NULL,
+  `ehobi` varchar(100) DEFAULT NULL,
+  `epasangan` varchar(100) DEFAULT NULL,
+  `epekerjaan` varchar(100) DEFAULT NULL,
+  `enamaortu` varchar(100) DEFAULT NULL,
+  `enamakakak` varchar(100) DEFAULT NULL,
+  `enamadik` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -30,12 +48,12 @@ USE `db_pwd2025`;
 --
 
 CREATE TABLE `tbl_tamu` (
-  `cid` int NOT NULL,
+  `cid` int(11) NOT NULL,
   `cnama` varchar(100) DEFAULT NULL,
   `cemail` varchar(100) DEFAULT NULL,
   `cpesan` text,
   `dcreated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_tamu`
@@ -62,6 +80,12 @@ INSERT INTO `tbl_tamu` (`cid`, `cnama`, `cemail`, `cpesan`, `dcreated_at`) VALUE
 --
 
 --
+-- Indexes for table `tbl_biodata`
+--
+ALTER TABLE `tbl_biodata`
+  ADD PRIMARY KEY (`eid`);
+
+--
 -- Indexes for table `tbl_tamu`
 --
 ALTER TABLE `tbl_tamu`
@@ -72,10 +96,16 @@ ALTER TABLE `tbl_tamu`
 --
 
 --
+-- AUTO_INCREMENT for table `tbl_biodata`
+--
+ALTER TABLE `tbl_biodata`
+  MODIFY `eid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `tbl_tamu`
 --
 ALTER TABLE `tbl_tamu`
-  MODIFY `cid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
