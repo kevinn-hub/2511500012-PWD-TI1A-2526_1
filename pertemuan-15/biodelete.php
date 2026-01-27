@@ -3,17 +3,15 @@
   require __DIR__ . '/koneksi.php';
   require_once __DIR__ . '/fungsi.php';
 
-
   #validasi cid wajib angka dan > 0
   $eid = filter_input(INPUT_GET, 'eid', FILTER_VALIDATE_INT, [
     'options' => ['min_range' => 1]
   ]);
 
   if (!$eid) {
-    $_SESSION['flash_error'] = 'CID Tidak Valid.';
+    $_SESSION['flash_error_biodata'] = 'eID Tidak Valid.';
     redirect_ke('bioread.php');
   }
-
 
   /*
     Prepared statement untuk anti SQL injection.
@@ -24,7 +22,7 @@
                                 WHERE eid = ?");
   if (!$stmt) {
     #jika gagal prepare, kirim pesan error (tanpa detail sensitif)
-    $_SESSION['flash_error'] = 'Terjadi kesalahan sistem (prepare gagal).';
+    $_SESSION['flash_error_biodata'] = 'Terjadi kesalahan sistem (prepare gagal).';
     redirect_ke('bioread.php');
   }
 
@@ -35,9 +33,9 @@
     /*
       Redirect balik ke read.php dan tampilkan info sukses.
     */
-    $_SESSION['flash_sukses'] = 'Terima kasih, data Anda sudah dihapus.';
+    $_SESSION['flash_sukses_biodata'] = 'Terima kasih, data Anda sudah dihapus.';
   } else { #jika gagal, simpan kembali old value dan tampilkan error umum
-    $_SESSION['flash_error'] = 'Data gagal dihapus. Silakan coba lagi.';
+    $_SESSION['flash_error_biodata'] = 'Data gagal dihapus. Silakan coba lagi.';
   }
   #tutup statement
   mysqli_stmt_close($stmt);

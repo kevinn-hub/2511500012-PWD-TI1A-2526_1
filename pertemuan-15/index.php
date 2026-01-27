@@ -1,212 +1,216 @@
-<?php
-session_start();
-require_once __DIR__ . '/fungsi.php';
-?>
+  <?php
+  session_start();
+  require_once __DIR__ . '/fungsi.php';
+  ?>
 
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Judul Halaman</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Judul Halaman</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
 
-<body>
-  <header>
-    <h1>Ini Header</h1>
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
-      &#9776;
-    </button>
-    <nav>
-      <ul>
-        <li><a href="#home">Beranda</a></li>
-        <li><a href="#about">Tentang</a></li>
-        <li><a href="#contact">Kontak</a></li>
-      </ul>
-    </nav>
-  </header>
+  <body>
+    <header>
+      <h1>Ini Header</h1>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+        &#9776;
+      </button>
+      <nav>
+        <ul>
+          <li><a href="#home">Beranda</a></li>
+          <li><a href="#about">Tentang</a></li>
+          <li><a href="#contact">Kontak</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <main>
-    <section id="home">
-      <h2>Selamat Datang</h2>
-      <?php
-      echo "halo dunia!<br>";
-      echo "nama saya hadi";
-      ?>
-      <p>Ini contoh paragraf HTML.</p>
-    </section>
+    <main>
+      <section id="home">
+        <h2>Selamat Datang</h2>
+        <?php
+        echo "halo dunia!<br>";
+        echo "nama saya hadi";
+        ?>
+        <p>Ini contoh paragraf HTML.</p>
+      </section>
 
-     <?php
-    $flash_sukses = $_SESSION['flash_sukses'] ?? ''; #jika query sukses
-    $flash_error  = $_SESSION['flash_error'] ?? ''; #jika ada error
-    $old          = $_SESSION['old'] ?? []; #untuk nilai lama form
+        <?php
+        $flash_sukses_biodata = $_SESSION['flash_sukses_biodata'] ?? ''; #jika query sukses
+        $flash_error_biodata  = $_SESSION['flash_error_biodata'] ?? ''; #jika ada error
+        $old_biodata          = $_SESSION['oldata'] ?? []; #untuk nilai lama form
 
-    unset($_SESSION['flash_sukses'], $_SESSION['flash_error'], $_SESSION['old']); #bersihkan 3 session ini
-    ?>
+        unset($_SESSION['flash_sukses_biodata'], $_SESSION['flash_error_biodata'], $_SESSION['oldata']); #bersihkan 3 session ini
+        ?>
 
-    
-    <section id="biodata">
-      <h2>Biodata Sederhana Mahasiswa</h2>
+      <section id="biodata">
+        <h2>Biodata Sederhana Mahasiswa</h2>
 
-      <?php if (!empty($flash_sukses)): ?>
-        <div style="padding:10px; margin-bottom:10px; background:#d4edda; color:#155724; border-radius:6px;">
-          <?= $flash_sukses; ?>
-        </div>
-      <?php endif; ?>
+          <?php if (!empty($flash_sukses_biodata)): ?>
+            <div style="padding:10px; margin-bottom:10px; background:#d4edda; color:#155724; border-radius:6px;">
+              <?= $flash_sukses_biodata; ?>
+            </div>
+          <?php endif; ?>
 
-      <?php if (!empty($flash_error)): ?>
-        <div style="padding:10px; margin-bottom:10px; background:#f8d7da; color:#721c24; border-radius:6px;">
-          <?= $flash_error; ?>
-        </div>
-      <?php endif; ?>
+          <?php if (!empty($flash_error_biodata)): ?>
+            <div style="padding:10px; margin-bottom:10px; background:#f8d7da; color:#721c24; border-radius:6px;">
+              <?= $flash_error_biodata; ?>
+            </div>
+          <?php endif; ?>
 
-      <form action="bioproses.php" method="POST">
+        <form action="bioproses.php" method="POST">
 
-        <label for="txtNim"><span>NIM:</span>
-    <input type="text" id="txtNim" name="txtNim" placeholder="Masukkan NIM" required
-        value="<?= isset($old['txtNim']) ? htmlspecialchars($old['txtNim']) : '' ?>">
-</label>
+          <label for="txtNim"><span>NIM:</span>
+            <input type="text" id="txtNim" name="txtNim" placeholder="Masukkan NIM" required
+                  value="<?= isset($old_biodata['nim']) ? htmlspecialchars($old_biodata['nim']) : '' ?>">
+          </label>
 
-<label for="txtNmLengkap"><span>Nama Lengkap:</span>
-    <input type="text" id="txtNmLengkap" name="txtNmLengkap" placeholder="Masukkan Nama Lengkap" required
-        value="<?= isset($old['txtNmLengkap']) ? htmlspecialchars($old['txtNmLengkap']) : '' ?>">
-</label>
+          <label for="txtNmLengkap"><span>Nama Lengkap:</span>
+            <input type="text" id="txtNamaLengkap" name="txtNamaLengkap" placeholder="Masukkan Nama Lengkap" required
+                  value="<?= isset($old_biodata['namalengkap']) ? htmlspecialchars($old_biodata['namalengkap']) : '' ?>">
+          </label>
 
-<label for="txtT4Lhr"><span>Tempat Lahir:</span>
-    <input type="text" id="txtT4Lhr" name="txtT4Lhr" placeholder="Masukkan Tempat Lahir" required
-        value="<?= isset($old['txtT4Lhr']) ? htmlspecialchars($old['txtT4Lhr']) : '' ?>">
-</label>
+          <label for="txtT4Lhr"><span>Tempat Lahir:</span>
+            <input type="text" id="txtTempatlahir" name="txtTempatlahir" placeholder="Masukkan Tempat Lahir" required
+                  value="<?= isset($old_biodata['tempatlahir']) ? htmlspecialchars($old_biodata['tempatlahir']) : '' ?>">
+          </label>
 
-<label for="txtTglLhr"><span>Tanggal Lahir:</span>
-    <input type="date" id="txtTglLhr" name="txtTglLhr" placeholder="Masukkan Tanggal Lahir" required
-        value="<?= isset($old['txtTglLhr']) ? htmlspecialchars($old['txtTglLhr']) : '' ?>">
-</label>
+          <label for="txtTglLhr"><span>Tanggal Lahir:</span>
+            <input type="text" id="txtTanggallahir" name="txtTanggallahir" placeholder="Masukkan Tanggal Lahir" required
+                  value="<?= isset($old_biodata['tanggallahir']) ? htmlspecialchars($old_biodata['tanggallahir']) : '' ?>">
+          </label>
 
-<label for="txtHobi"><span>Hobi:</span>
-    <input type="text" id="txtHobi" name="txtHobi" placeholder="Masukkan Hobi" required
-        value="<?= isset($old['txtHobi']) ? htmlspecialchars($old['txtHobi']) : '' ?>">
-</label>
+          <label for="txtHobi"><span>Hobi:</span>
+            <input type="text" id="txtHobi" name="txtHobi" placeholder="Masukkan Hobi" required
+                  value="<?= isset($old_biodata['hobi']) ? htmlspecialchars($old_biodata['hobi']) : '' ?>">
+          </label>
 
-<label for="txtPasangan"><span>Pasangan:</span>
-    <input type="text" id="txtPasangan" name="txtPasangan" placeholder="Masukkan Pasangan" required
-        value="<?= isset($old['txtPasangan']) ? htmlspecialchars($old['txtPasangan']) : '' ?>">
-</label>
+          <label for="txtPasangan"><span>Pasangan:</span>
+            <input type="text" id="txtPasangan" name="txtPasangan" placeholder="Masukkan Pasangan" required
+                  value="<?= isset($old_biodata['pasangan']) ? htmlspecialchars($old_biodata['pasangan']) : '' ?>">
+          </label>
 
-<label for="txtKerja"><span>Pekerjaan:</span>
-    <input type="text" id="txtKerja" name="txtKerja" placeholder="Masukkan Pekerjaan" required
-        value="<?= isset($old['txtKerja']) ? htmlspecialchars($old['txtKerja']) : '' ?>">
-</label>
+          <label for="txtKerja"><span>Pekerjaan:</span>
+            <input type="text" id="txtpekerjaan" name="txtpekerjaan" placeholder="Masukkan Pekerjaan" required
+                  value="<?= isset($old_biodata['pekerjaan']) ? htmlspecialchars($old_biodata['pekerjaan']) : '' ?>">
+          </label>
 
-<label for="txtNmOrtu"><span>Nama Orang Tua:</span>
-    <input type="text" id="txtNmOrtu" name="txtNmOrtu" placeholder="Masukkan Nama Orang Tua" required
-        value="<?= isset($old['txtNmOrtu']) ? htmlspecialchars($old['txtNmOrtu']) : '' ?>">
-</label>
+          <label for="txtNmOrtu"><span>Nama Orang Tua:</span>
+            <input type="text" id="txtnamaorangtua" name="txtnamaorangtua" placeholder="Masukkan Nama Orang Tua" required
+                  value="<?= isset($old_biodata['namaorangtua']) ? htmlspecialchars($old_biodata['namaorangtua']) : '' ?>">
+          </label>
 
-<label for="txtNmKakak"><span>Nama Kakak:</span>
-    <input type="text" id="txtNmKakak" name="txtNmKakak" placeholder="Masukkan Nama Kakak" required
-        value="<?= isset($old['txtNmKakak']) ? htmlspecialchars($old['txtNmKakak']) : '' ?>">
-</label>
+          <label for="txtNmKakak"><span>Nama Kakak:</span>
+            <input type="text" id="txtnamakakak" name="txtnamakakak" placeholder="Masukkan Nama Kakak" required
+                  value="<?= isset($old_biodata['namakakak']) ? htmlspecialchars($old_biodata['namakakak']) : '' ?>">
+          </label>
 
-<label for="txtNmAdik"><span>Nama Adik:</span>
-    <input type="text" id="txtNmAdik" name="txtNmAdik" placeholder="Masukkan Nama Adik" required
-        value="<?= isset($old['txtNmAdik']) ? htmlspecialchars($old['txtNmAdik']) : '' ?>">
-</label>
+          <label for="txtNmAdik"><span>Nama Adik:</span>
+            <input type="text" id="txtnamaadik" name="txtnamaadik" placeholder="Masukkan Nama Adik" required
+                  value="<?= isset($old_biodata['namaadik']) ? htmlspecialchars($old_biodata['namaadik']) : '' ?>">
+          </label>
 
-      
-        <button type="submit">Kirim</button>
-        <button type="reset">Batal</button>
-      </form>
-    </section>
+          <label for="txtCaptcha"><span>Captcha 2 + 3 = ?</span>
+            <input type="number" id="txtCaptcha" name="txtCaptcha" placeholder="Jawab Pertanyaan..."
+              required
+              value="<?= isset($old_biodata['captcha']) ? htmlspecialchars($old_biodata['captcha']) : '' ?>">
+          </label>
 
-    <?php
-    $biodata = $_SESSION["biodata"] ?? [];
-
-    $fieldConfig = [
-      "nim" => ["label" => "NIM:", "suffix" => ""],
-      "nama" => ["label" => "Nama Lengkap:", "suffix" => " &#128526;"],
-      "tempat" => ["label" => "Tempat Lahir:", "suffix" => ""],
-      "tanggal" => ["label" => "Tanggal Lahir:", "suffix" => ""],
-      "hobi" => ["label" => "Hobi:", "suffix" => " &#127926;"],
-      "pasangan" => ["label" => "Pasangan:", "suffix" => " &hearts;"],
-      "pekerjaan" => ["label" => "Pekerjaan:", "suffix" => " &copy; 2025"],
-      "ortu" => ["label" => "Nama Orang Tua:", "suffix" => ""],
-      "kakak" => ["label" => "Nama Kakak:", "suffix" => ""],
-      "adik" => ["label" => "Nama Adik:", "suffix" => ""],
-    ];
-    ?>
-
-    <section id="about">
-      <h2>Tentang Saya</h2>
-      <?php include 'bioread_inc.php'; ?>
-    </section>
-
-    <?php
-    $flash_sukses = $_SESSION['flash_sukses'] ?? ''; #jika query sukses
-    $flash_error  = $_SESSION['flash_error'] ?? ''; #jika ada error
-    $old          = $_SESSION['old'] ?? []; #untuk nilai lama form
-
-    unset($_SESSION['flash_sukses'], $_SESSION['flash_error'], $_SESSION['old']); #bersihkan 3 session ini
-    ?>
-
-    <section id="contact">
-      <h2>Kontak Kami</h2>
-
-      <?php if (!empty($flash_sukses)): ?>
-        <div style="padding:10px; margin-bottom:10px; background:#d4edda; color:#155724; border-radius:6px;">
-          <?= $flash_sukses; ?>
-        </div>
-      <?php endif; ?>
-
-      <?php if (!empty($flash_error)): ?>
-        <div style="padding:10px; margin-bottom:10px; background:#f8d7da; color:#721c24; border-radius:6px;">
-          <?= $flash_error; ?>
-        </div>
-      <?php endif; ?>
-
-      <form action="proses.php" method="POST">
-
-        <label for="txtNama"><span>Nama:</span>
-          <input type="text" id="txtNama" name="txtNama" placeholder="Masukkan nama"
-            required autocomplete="name"
-            value="<?= isset($old['nama']) ? htmlspecialchars($old['nama']) : '' ?>">
-        </label>
-
-        <label for="txtEmail"><span>Email:</span>
-          <input type="email" id="txtEmail" name="txtEmail" placeholder="Masukkan email"
-            required autocomplete="email"
-            value="<?= isset($old['email']) ? htmlspecialchars($old['email']) : '' ?>">
-        </label>
-
-        <label for="txtPesan"><span>Pesan Anda:</span>
-          <textarea id="txtPesan" name="txtPesan" rows="4" placeholder="Tulis pesan anda..."
-            required><?= isset($old['pesan']) ? htmlspecialchars($old['pesan']) : '' ?></textarea>
-          <small id="charCount">0/200 karakter</small>
-        </label>
-
-        <label for="txtCaptcha"><span>Captcha 2 + 3 = ?</span>
-          <input type="number" id="txtCaptcha" name="txtCaptcha" placeholder="Jawab Pertanyaan..."
-            required
-            value="<?= isset($old['captcha']) ? htmlspecialchars($old['captcha']) : '' ?>">
-        </label>
-
-        <button type=" submit">Kirim</button>
+          <button type="submit">Kirim</button>
           <button type="reset">Batal</button>
-      </form>
+        </form>
+      </section>
 
-      <br>
-      <hr>
-      <h2>Yang menghubungi kami</h2>
-      <?php include 'read_inc.php'; ?>
-    </section>
-  </main>
+      <?php
+      $biodata = $_SESSION["biodata"] ?? [];
 
-  <footer>
-    <p>&copy; 2025 Yohanes Setiawan Japriadi [0344300002]</p>
-  </footer>
+      $fieldConfig = [
+        "nim" => ["label" => "NIM:", "suffix" => ""],
+        "nama" => ["label" => "Nama Lengkap:", "suffix" => " &#128526;"],
+        "tempat" => ["label" => "Tempat Lahir:", "suffix" => ""],
+        "tanggal" => ["label" => "Tanggal Lahir:", "suffix" => ""],
+        "hobi" => ["label" => "Hobi:", "suffix" => " &#127926;"],
+        "pasangan" => ["label" => "Pasangan:", "suffix" => " &hearts;"],
+        "pekerjaan" => ["label" => "Pekerjaan:", "suffix" => " &copy; 2025"],
+        "ortu" => ["label" => "Nama Orang Tua:", "suffix" => ""],
+        "kakak" => ["label" => "Nama Kakak:", "suffix" => ""],
+        "adik" => ["label" => "Nama Adik:", "suffix" => ""],
+      ];
+      ?>
 
-  <script src="script.js"></script>
-</body>
+      <section id="about">
+        <h2>Tentang Saya</h2>
+          <?php include 'bioread_inc.php'; ?>
+      </section>
 
-</html>
+      <?php
+      $flash_sukses = $_SESSION['flash_sukses'] ?? ''; #jika query sukses
+      $flash_error  = $_SESSION['flash_error'] ?? ''; #jika ada error
+      $old          = $_SESSION['old'] ?? []; #untuk nilai lama form
+
+      unset($_SESSION['flash_sukses'], $_SESSION['flash_error'], $_SESSION['old']); #bersihkan 3 session ini
+      ?>
+
+      <section id="contact">
+        <h2>Kontak Kami</h2>
+
+        <?php if (!empty($flash_sukses)): ?>
+          <div style="padding:10px; margin-bottom:10px; background:#d4edda; color:#155724; border-radius:6px;">
+            <?= $flash_sukses; ?>
+          </div>
+        <?php endif; ?>
+
+        <?php if (!empty($flash_error)): ?>
+          <div style="padding:10px; margin-bottom:10px; background:#f8d7da; color:#721c24; border-radius:6px;">
+            <?= $flash_error; ?>
+          </div>
+        <?php endif; ?>
+
+        <form action="proses.php" method="POST">
+
+          <label for="txtNama"><span>Nama:</span>
+            <input type="text" id="txtNama" name="txtNama" placeholder="Masukkan nama"
+              required autocomplete="name"
+              value="<?= isset($old['nama']) ? htmlspecialchars($old['nama']) : '' ?>">
+          </label>
+
+          <label for="txtEmail"><span>Email:</span>
+            <input type="email" id="txtEmail" name="txtEmail" placeholder="Masukkan email"
+              required autocomplete="email"
+              value="<?= isset($old['email']) ? htmlspecialchars($old['email']) : '' ?>">
+          </label>
+
+          <label for="txtPesan"><span>Pesan Anda:</span>
+            <textarea id="txtPesan" name="txtPesan" rows="4" placeholder="Tulis pesan anda..."
+              required><?= isset($old['pesan']) ? htmlspecialchars($old['pesan']) : '' ?></textarea>
+            <small id="charCount">0/200 karakter</small>
+          </label>
+
+          <label for="txtCaptcha"><span>Captcha 2 + 3 = ?</span>
+            <input type="number" id="txtCaptcha" name="txtCaptcha" placeholder="Jawab Pertanyaan..."
+              required
+              value="<?= isset($old['captcha']) ? htmlspecialchars($old['captcha']) : '' ?>">
+          </label>
+
+          <button type=" submit">Kirim</button>
+            <button type="reset">Batal</button>
+        </form>
+
+        <br>
+        <hr>
+        <h2>Yang menghubungi kami</h2>
+        <?php include 'read_inc.php'; ?>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Yohanes Setiawan Japriadi [0344300002]</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+
+  </html>

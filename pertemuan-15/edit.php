@@ -106,7 +106,7 @@
         <?php endif; ?>
         <form action="proses_update.php" method="POST">
 
-          <input type="text" name="cid" value="<?= (int)$cid; ?>">
+          <input type="text" name="eid" value="<?= (int)$eid; ?>">
 
           <label for="txtNama"><span>Nama:</span>
             <input type="text" id="txtNama" name="txtNamaEd" 

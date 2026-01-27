@@ -3,7 +3,6 @@
   require __DIR__ . '/koneksi.php';
   require_once __DIR__ . '/fungsi.php';
 
-
   #validasi cid wajib angka dan > 0
   $cid = filter_input(INPUT_GET, 'cid', FILTER_VALIDATE_INT, [
     'options' => ['min_range' => 1]
@@ -13,7 +12,6 @@
     $_SESSION['flash_error'] = 'CID Tidak Valid.';
     redirect_ke('read.php');
   }
-
 
   /*
     Prepared statement untuk anti SQL injection.
