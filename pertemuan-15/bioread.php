@@ -65,7 +65,7 @@ function formatTanggal($tgl) {
             <td><?= htmlspecialchars($row['enamakakak']); ?></td>
             <td><?= htmlspecialchars($row['enamadik']); ?></td>
             <td>
-                <a href="editbio.php?eid=<?= $row['eid']; ?>">Edit</a>
+                <a href="bioedit.php?eid=<?= $row['eid']; ?>">Edit</a>
                 <a onclick="return confirm('Hapus <?= htmlspecialchars($row['enamlengkap']); ?>?')" href="biodelete.php?eid=<?= $row['eid']; ?>">Delete</a>
             </td>
         </tr>

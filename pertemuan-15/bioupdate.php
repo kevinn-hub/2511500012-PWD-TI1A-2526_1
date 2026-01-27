@@ -26,7 +26,7 @@ if (strlen($namaLengkap) < 3) $errors[] = "Nama minimal 3 karakter";
 if (!empty($errors)) {
     $_SESSION['flash_error'] = implode('<br>', $errors);
     $_SESSION['old'] = $_POST;
-    redirect_ke("editbio.php?eid={$eid}");
+    redirect_ke("bioedit.php?eid={$eid}");
 }
 
 // Update data
@@ -40,7 +40,9 @@ if (mysqli_stmt_execute($stmt)) {
 } else {
     $_SESSION['flash_error'] = "Gagal memperbarui data.";
     $_SESSION['old'] = $_POST;
-    redirect_ke("editbio.php?eid={$eid}");
+    redirect_ke("bioedit.php?eid={$eid}");
 }
+ mysqli_stmt_close($stmt);
 
+  redirect_ke('bioedit.php?cid='. (int)$cid);
 
