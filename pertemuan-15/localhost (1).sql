@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 27, 2026 at 07:17 AM
+-- Generation Time: Jan 27, 2026 at 08:38 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_pwd2025`
 --
+CREATE DATABASE IF NOT EXISTS `db_pwd2025` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `db_pwd2025`;
 
 -- --------------------------------------------------------
 
@@ -29,7 +31,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tbl_biodata` (
   `eid` int(11) NOT NULL,
-  `enim` varchar(50) DEFAULT NULL,
+  `enim` varchar(70) DEFAULT NULL,
   `enamlengkap` varchar(100) DEFAULT NULL,
   `etempatlahir` varchar(50) DEFAULT NULL,
   `etanggallahir` date DEFAULT NULL,
@@ -40,6 +42,13 @@ CREATE TABLE `tbl_biodata` (
   `enamakakak` varchar(100) DEFAULT NULL,
   `enamadik` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_biodata`
+--
+
+INSERT INTO `tbl_biodata` (`eid`, `enim`, `enamlengkap`, `etempatlahir`, `etanggallahir`, `ehobi`, `epasangan`, `epekerjaan`, `enamaortu`, `enamakakak`, `enamadik`) VALUES
+(1, '323', '3233', '32323', '0323-02-23', '232323', '23232', '323', '23', '23', '23');
 
 -- --------------------------------------------------------
 
@@ -99,7 +108,7 @@ ALTER TABLE `tbl_tamu`
 -- AUTO_INCREMENT for table `tbl_biodata`
 --
 ALTER TABLE `tbl_biodata`
-  MODIFY `eid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `eid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_tamu`
