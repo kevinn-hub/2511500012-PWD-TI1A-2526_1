@@ -59,9 +59,10 @@
     }
 
     // Insert ke database
-  $sql = "INSERT INTO tbl_biodata
-  (ekodedosen, enamadosen, ealamatrumah, etanggaljadidosen, ejjadosen, ehomebaseprodi, enomorhp, enamapasangan, enamaanak, enamakakak, ebidangilmudosen, ecreatedat)
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
+  $sql = $sql = "INSERT INTO tbl_biodata
+(ekodedosen, enamadosen, ealamatrumah, etanggaljadidosen, ejjadosen, ehomebaseprodi, enomorhp, enamapasangan, enamaanak, enamakakak, ebidangilmudosen, ecreatedat)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
+;
 
 
     $stmt = mysqli_prepare($conn, $sql);
