@@ -38,79 +38,87 @@ require_once __DIR__ . '/fungsi.php';
       <p>Ini contoh paragraf HTML.</p>
     </section>
 
-    
-    <?php
-    $flash_sukses_biodata = $_SESSION['flash_sukses_biodata'] ?? ''; #jika query sukses
-    $flash_error_biodata  = $_SESSION['flash_error_biodata'] ?? ''; #jika ada error
-    $olddata          = $_SESSION['oldata'] ?? []; #untuk nilai lama form
+       <?php
+        $flash_sukses = $_SESSION['flash_sukses'] ?? ''; #jika query sukses
+        $flash_error  = $_SESSION['flash_error'] ?? ''; #jika ada error
+        $old          = $_SESSION['old'] ?? []; #untuk nilai lama form
 
-    unset($_SESSION['flash_sukses_biodata'], $_SESSION['flash_error_biodata'], $_SESSION['oldata']); #bersihkan 3 session ini
-    ?>
+        unset($_SESSION['flash_sukses'], $_SESSION['flash_error'], $_SESSION['old']); #bersihkan 3 session ini
+        ?>
 
     <section id="biodata">
       <h2>Biodata Dosen</h2>
-            <?php if (!empty($flash_sukses_biodata)): ?>
+
+      <?php if (!empty($flash_sukses)): ?>
         <div style="padding:10px; margin-bottom:10px; background:#d4edda; color:#155724; border-radius:6px;">
-          <?= $flash_sukses_biodata; ?>
+          <?= $flash_sukses; ?>
         </div>
       <?php endif; ?>
 
-      <?php if (!empty($flash_error_biodata)): ?>
+      <?php if (!empty($flash_error)): ?>
         <div style="padding:10px; margin-bottom:10px; background:#f8d7da; color:#721c24; border-radius:6px;">
-          <?= $flash_error_biodata; ?>
+          <?= $flash_error; ?>
         </div>
       <?php endif; ?>
+
       <form action="bioproses.php" method="POST">
 
-          <label for="txtKodeDosen"><span>Kode Dosen:</span>
-        <input type="text" id="txtKodeDosen" name="txtKodeDosen" placeholder="Masukkan Kode Dosen" required
-               value="<?= isset($olddata['kodedosen']) ? htmlspecialchars($olddata['kodedosen']) : '' ?>">
-    </label>
+        <label for="txtkodedosen"><span>Kode Dosen:</span>
+          <input type="text" id="txtkodedosen" name="txtkodedosen" placeholder="Masukkan Kode Dosen" required
+           value="<?= isset($old['txtkodedosen']) ? htmlspecialchars($old['txtkodedosen']) : '' ?>">
+        </label>
 
-    <label for="txtNmDosen"><span>Nama Dosen:</span>
-        <input type="text" id="txtNmDosen" name="txtNmDosen" placeholder="Masukkan Nama Dosen" required
-               value="<?= isset($olddata['nama']) ? htmlspecialchars($olddata['nama']) : '' ?>">
-    </label>
+        <label for="txtnamadosen"><span>Nama Dosen:</span>
+          <input type="text" id="txtnamadosen" name="txtnamadosen" placeholder="Masukkan Nama Dosen" required
+           value="<?= isset($old['txtnamadosen']) ? htmlspecialchars($old['txtnamadosen']) : '' ?>">
+        </label>
 
-    <label for="txtAlRmh"><span>Alamat Rumah:</span>
-        <input type="text" id="txtAlRmh" name="txtAlRmh" placeholder="Masukkan Alamat Rumah" required
-               value="<?= isset($olddata['alamat']) ? htmlspecialchars($olddata['alamat']) : '' ?>">
-    </label>
+        <label for="txtalamatrumah"><span>Alamat Rumah:</span>
+          <input type="text" id="txtalamatrumah" name="txtalamatrumah" placeholder="Masukkan Alamat Rumah" required
+           value="<?= isset($old['txtalamatrumah']) ? htmlspecialchars($old['txtalamatrumah']) : '' ?>">
+        </label>
 
-    <label for="txtTglDosen"><span>Tanggal Jadi Dosen:</span>
-        <input type="text" id="txtTglDosen" name="txtTglDosen" placeholder="Masukkan Tanggal Jadi Dosen" required
-               value="<?= isset($olddata['tanggal']) ? htmlspecialchars($olddata['tanggal']) : '' ?>">
-    </label>
+        <label for="txttanggaldosen"><span>Tanggal Jadi Dosen:</span>
+          <input type="text" id="txttangaldosen" name="txttanggaldosen" placeholder="Masukkan Tanggal Jadi Dosen" required
+           value="<?= isset($old['txttanggaldosen']) ? htmlspecialchars($old['txttanggaldosen']) : '' ?>">
+        </label>
 
-    <label for="txtJJA"><span>JJA Dosen:</span>
-        <input type="text" id="txtJJA" name="txtJJA" placeholder="Masukkan JJA Dosen" required
-               value="<?= isset($olddata['jja']) ? htmlspecialchars($olddata['jja']) : '' ?>">
-    </label>
+        <label for="txtjja"><span>JJA Dosen:</span>
+          <input type="text" id="txtjja" name="txtjja" placeholder="Masukkan JJA Dosen" required
+           value="<?= isset($old['txtjja']) ? htmlspecialchars($old['txtjja']) : '' ?>">
+        </label>
 
-    <label for="txtProdi"><span>Homebase Prodi:</span>
-        <input type="text" id="txtProdi" name="txtProdi" placeholder="Masukkan Homebase Prodi" required
-               value="<?= isset($olddata['prodi']) ? htmlspecialchars($olddata['prodi']) : '' ?>">
-    </label>
+        <label for="txtprodi"><span>Homebase Prodi:</span>
+          <input type="text" id="txtprodi" name="txtprodi" placeholder="Masukkan Homebase Prodi" required
+           value="<?= isset($old['txtprodi']) ? htmlspecialchars($old['txtprodi']) : '' ?>">
+        </label>
 
-    <label for="txtNoHP"><span>Nomor HP:</span>
-        <input type="text" id="txtNoHP" name="txtNoHP" placeholder="Masukkan Nomor HP" required
-               value="<?= isset($olddata['nohp']) ? htmlspecialchars($olddata['nohp']) : '' ?>">
-    </label>
+        <label for="txtnomorhp"><span>Nomor HP:</span>
+          <input type="text" id="txtnomorhp" name="txtnomorhp" placeholder="Masukkan Nomor HP" required
+           value="<?= isset($old['txtnomorhp']) ? htmlspecialchars($old['txtnomorhp']) : '' ?>">
+        </label>
 
-    <label for="txNamaPasangan"><span>Nama Pasangan:</span>
-        <input type="text" id="txNamaPasangan" name="txNamaPasangan" placeholder="Masukkan Nama Pasangan" required
-               value="<?= isset($olddata['pasangan']) ? htmlspecialchars($olddata['pasangan']) : '' ?>">
-    </label>
+        <label for="txtnamapasangan"><span>Nama Pasangan:</span>
+          <input type="text" id="txtnamapasangan" name="txtnamapasangan" placeholder="Masukkan Nama Pasangan" required
+           value="<?= isset($old['txtnamapasangan']) ? htmlspecialchars($old['txtnamapasangan']) : '' ?>">
+        </label>
 
-    <label for="txtNmAnak"><span>Nama Anak:</span>
-        <input type="text" id="txtNmAnak" name="txtNmAnak" placeholder="Masukkan Nama Anak" required
-               value="<?= isset($olddata['anak']) ? htmlspecialchars($olddata['anak']) : '' ?>">
-    </label>
+        <label for="txtnamaanak"><span>Nama Anak:</span>
+          <input type="text" id="txtnamanak" name="txtnamaanak" placeholder="Masukkan Nama Anak" required
+           value="<?= isset($old['txtnamaanak']) ? htmlspecialchars($old['txtnamaanak']) : '' ?>">
+        </label>
 
-    <label for="txtBidangIlmu"><span>Bidang Ilmu Dosen:</span>
-        <input type="text" id="txtBidangIlmu" name="txtBidangIlmu" placeholder="Masukkan Bidang Ilmu Dosen" required
-               value="<?= isset($olddata['ilmu']) ? htmlspecialchars($olddata['ilmu']) : '' ?>">
-    </label>  
+        <label for="txtbidangilmu"><span>Bidang Ilmu Dosen:</span>
+          <input type="text" id="txtbidangilmu" name="txtbidangilmu" placeholder="Masukkan Bidang Ilmu Dosen" required
+           value="<?= isset($old['txtbidangilmu']) ? htmlspecialchars($old['txtbidangilmu']) : '' ?>">
+        </label>
+
+        <label for="txtCaptcha"><span>Captcha 2 + 3 = ?</span>
+          <input type="number" id="txtCaptcha" name="txtCaptcha" placeholder="Jawab Pertanyaan..."
+            required
+            value="<?= isset($old['captcha']) ? htmlspecialchars($old['captcha']) : '' ?>">
+        </label>
+
         <button type="submit">Kirim</button>
         <button type="reset">Batal</button>
       </form>
@@ -135,30 +143,29 @@ require_once __DIR__ . '/fungsi.php';
 
     <section id="about">
       <h2>Tentang Saya</h2>
-       <?php include 'bioinc.php'; ?> 
-   
+      <?php include 'bioread_inc.php'; ?>
     </section>
 
     <?php
-    $flash_sukses = $_SESSION['flash_sukses'] ?? ''; #jika query sukses
-    $flash_error  = $_SESSION['flash_error'] ?? ''; #jika ada error
-    $old          = $_SESSION['old'] ?? []; #untuk nilai lama form
+    $flash_mantap = $_SESSION['flash_mantap'] ?? ''; #jika query sukses
+    $flash_gagal  = $_SESSION['flash_gagal'] ?? ''; #jika ada error
+    $oldata       = $_SESSION['oldata'] ?? []; #untuk nilai lama form
 
-    unset($_SESSION['flash_sukses'], $_SESSION['flash_error'], $_SESSION['old']); #bersihkan 3 session ini
+    unset($_SESSION['flash_mantap'], $_SESSION['flash_gagal'], $_SESSION['oldata']); #bersihkan 3 session ini
     ?>
 
     <section id="contact">
       <h2>Kontak Kami</h2>
 
-      <?php if (!empty($flash_sukses)): ?>
+      <?php if (!empty($flash_mantap)): ?>
         <div style="padding:10px; margin-bottom:10px; background:#d4edda; color:#155724; border-radius:6px;">
-          <?= $flash_sukses; ?>
+          <?= $flash_mantap; ?>
         </div>
       <?php endif; ?>
 
-      <?php if (!empty($flash_error)): ?>
+      <?php if (!empty($flash_gagal)): ?>
         <div style="padding:10px; margin-bottom:10px; background:#f8d7da; color:#721c24; border-radius:6px;">
-          <?= $flash_error; ?>
+          <?= $flash_gagal; ?>
         </div>
       <?php endif; ?>
 

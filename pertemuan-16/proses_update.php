@@ -5,7 +5,7 @@
 
   #cek method form, hanya izinkan POST
   if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    $_SESSION['flash_error'] = 'Akses tidak valid.';
+    $_SESSION['flash_gagal'] = 'Akses tidak valid.';
     redirect_ke('read.php');
   }
 
@@ -15,7 +15,7 @@
   ]);
 
   if (!$cid) {
-    $_SESSION['flash_error'] = 'CID Tidak Valid.';
+    $_SESSION['flash_gagal'] = 'CID Tidak Valid.';
     redirect_ke('edit.php?cid='. (int)$cid);
   }
 
@@ -63,13 +63,13 @@
   simpan nilai lama dan pesan error, lalu redirect (konsep PRG)
   */
   if (!empty($errors)) {
-    $_SESSION['old'] = [
+    $_SESSION['oldata'] = [
       'nama'  => $nama,
       'email' => $email,
       'pesan' => $pesan
     ];
 
-    $_SESSION['flash_error'] = implode('<br>', $errors);
+    $_SESSION['flash_gagal'] = implode('<br>', $errors);
     redirect_ke('edit.php?cid='. (int)$cid);
   }
 
@@ -83,7 +83,7 @@
                                 WHERE cid = ?");
   if (!$stmt) {
     #jika gagal prepare, kirim pesan error (tanpa detail sensitif)
-    $_SESSION['flash_error'] = 'Terjadi kesalahan sistem (prepare gagal).';
+    $_SESSION['flash_gagal'] = 'Terjadi kesalahan sistem (prepare gagal).';
     redirect_ke('edit.php?cid='. (int)$cid);
   }
 
@@ -95,7 +95,7 @@
     /*
       Redirect balik ke read.php dan tampilkan info sukses.
     */
-    $_SESSION['flash_sukses'] = 'Terima kasih, data Anda sudah diperbaharui.';
+    $_SESSION['flash_mantap'] = 'Terima kasih, data Anda sudah diperbaharui.';
     redirect_ke('read.php'); #pola PRG: kembali ke data dan exit()
   } else { #jika gagal, simpan kembali old value dan tampilkan error umum
     $_SESSION['old'] = [
@@ -103,7 +103,7 @@
       'email' => $email,
       'pesan' => $pesan,
     ];
-    $_SESSION['flash_error'] = 'Data gagal diperbaharui. Silakan coba lagi.';
+    $_SESSION['flash_gagal'] = 'Data gagal diperbaharui. Silakan coba lagi.';
     redirect_ke('edit.php?cid='. (int)$cid);
   }
   #tutup statement

@@ -5,7 +5,7 @@
 
   #cek method form, hanya izinkan POST
   if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    $_SESSION['flash_error_biodata'] = 'Akses tidak valid.';
+    $_SESSION['flash_error'] = 'Akses tidak valid.';
     redirect_ke('bioread.php');
   }
 
@@ -15,91 +15,92 @@
   ]);
 
   if (!$eid) {
-    $_SESSION['flash_error_biodata'] = 'eID Tidak Valid.';
+    $_SESSION['flash_error'] = 'CID Tidak Valid.';
     redirect_ke('bioedit.php?eid='. (int)$eid);
   }
 
   #ambil dan bersihkan (sanitasi) nilai dari form
-    $nim          = bersihkan($_POST['txtNim'] ?? '');
-    $namalengkap  = bersihkan($_POST['txtNamaLengkap'] ?? '');
-    $tempatlahir  = bersihkan($_POST['txtTempatlahir'] ?? '');
-    $tanggallahir = bersihkan($_POST['txtTanggallahir'] ?? '');
-    $hobi         = bersihkan($_POST['txtHobi'] ?? '');
-    $pasangan     = bersihkan($_POST['txtPasangan'] ?? '');
-    $pekerjaan    = bersihkan($_POST['txtPekerjaan'] ?? '');
-    $namaorangtua = bersihkan($_POST['txtNamaOrtu'] ?? '');
-    $namakakak    = bersihkan($_POST['txtNamaKakak'] ?? '');
-    $namaadik     = bersihkan($_POST['txtNamaAdik'] ?? '');
-    $captcha      = bersihkan($_POST['txtCaptcha'] ?? '');
-
+  $kodeDosen = bersihkan($_POST['txtkodedosen'] ?? '');
+  $namaDosen     = bersihkan($_POST['txtnamadosen'] ?? '');
+  $alamatRumah   = bersihkan($_POST['txtalamatrumah'] ?? '');
+  $tanggalJadi   = bersihkan($_POST['txttanggaldosen'] ?? '');
+  $jja           = bersihkan($_POST['txtjja'] ?? '');
+  $homebaseProdi = bersihkan($_POST['txtprodi'] ?? '');
+  $nomorHp       = bersihkan($_POST['txtnomorhp'] ?? '');
+  $namaPasangan  = bersihkan($_POST['txtnamapasangan'] ?? '');
+  $namaAnak      = bersihkan($_POST['txtnamaanak'] ?? '');
+  $bidangIlmu    = bersihkan($_POST['txtbidangilmu'] ?? '');
+  $captcha       = bersihkan($_POST['txtCaptcha'] ?? '');
 
   #Validasi sederhana
-  $errors = []; #ini array untuk menampung semua error yang ada
-    if ($nim === '') {
-      $errors[] = 'NIM wajib diisi.';
-    }
+ $errors = []; // array untuk menampung semua error
 
-    if ($namalengkap === '') {
-        $errors[] = 'Nama lengkap wajib diisi.';
-    } elseif (mb_strlen($namalengkap) < 3) {
-        $errors[] = 'Nama lengkap minimal 3 karakter.';
-    }
+// Validasi masing-masing field
+if ($kodeDosen === '') {
+    $errors[] = 'Nama Dosen wajib diisi.';
+}
+if ($namaDosen === '') {
+    $errors[] = 'Nama Dosen wajib diisi.';
+}
 
-    if ($tempatlahir === '') {
-        $errors[] = 'Tempat lahir wajib diisi.';
-    }
+if ($alamatRumah === '') {
+    $errors[] = 'Alamat Rumah wajib diisi.';
+}
 
-    if ($tanggallahir === '') {
-        $errors[] = 'Tanggal lahir wajib diisi.';
-    }
+if ($tanggalJadi === '') {
+    $errors[] = 'Tanggal Jadi Dosen wajib diisi.';
+}
 
-    if ($hobi === '') {
-        $errors[] = 'Hobi wajib diisi.';
-    }
+if ($jja === '') {
+    $errors[] = 'JJA Dosen wajib diisi.';
+}
 
-    if ($pasangan === '') {
-        $errors[] = 'Pasangan wajib diisi.';
-    }
+if ($homebaseProdi === '') {
+    $errors[] = 'Homebase Prodi wajib diisi.';
+}
 
-    if ($pekerjaan === '') {
-        $errors[] = 'Pekerjaan wajib diisi.';
-    }
+if ($nomorHp === '') {
+    $errors[] = 'Nomor HP wajib diisi.';
+}
 
-    if ($namaorangtua === '') {
-        $errors[] = 'Nama orang tua wajib diisi.';
-    }
+if ($namaPasangan === '') {
+    $errors[] = 'Nama Pasangan wajib diisi.';
+}
 
-    if ($namakakak === '') {
-        $errors[] = 'Nama kakak wajib diisi.';
-    }
+if ($namaAnak === '') {
+    $errors[] = 'Nama Anak wajib diisi.';
+}
 
-    if ($namaadik === '') {
-        $errors[] = 'Nama adik wajib diisi.';
-    }
+if ($bidangIlmu === '') {
+    $errors[] = 'Bidang Ilmu Dosen wajib diisi.';
+}
 
-  if ($captcha!=="6") {
-    $errors[] = 'Jawaban '. $captcha.' captcha salah.';
-  }
+if ($captcha === '') {
+    $errors[] = 'Captcha wajib diisi.';
+} elseif ($captcha !== "6") {
+    $errors[] = 'Jawaban captcha salah.';
+}
 
   /*
   kondisi di bawah ini hanya dikerjakan jika ada error, 
   simpan nilai lama dan pesan error, lalu redirect (konsep PRG)
   */
   if (!empty($errors)) {
-    $_SESSION['oldata'] = [
-    'nim'            => $nim,
-    'namalengkap'    => $namalengkap,
-    'tempatlahir'    => $tempatlahir,
-    'tanggallahir'   => $tanggallahir,
-    'hobi'           => $hobi,
-    'pasangan'       => $pasangan,
-    'pekerjaan'      => $pekerjaan,
-    'namaorangtua'   => $namaorangtua,
-    'namakakak'      => $namakakak,
-    'namaadik'       => $namaadik
+    $_SESSION['old'] = [
+      'txtkodedosen'   => $kodeDosen,
+      'txtnamadosen'   => $namaDosen,
+      'txtalamatrumah' => $alamatRumah,
+      'txttanggaldosen'=> $tanggalJadi,
+      'txtjja'         => $jja,
+      'txtprodi'       => $homebaseProdi,
+      'txtnomorhp'     => $nomorHp,
+      'txtnamapasangan' => $namaPasangan,
+      'txtnamaanak'    => $namaAnak,
+      'txtbidangilmu'  => $bidangIlmu,
+      'txtCaptcha'     => $captcha
     ];
 
-    $_SESSION['flash_error_biodata'] = implode('<br>', $errors);
+    $_SESSION['flash_error'] = implode('<br>', $errors);
     redirect_ke('bioedit.php?eid='. (int)$eid);
   }
 
@@ -109,52 +110,52 @@
     (WAJIB WHERE cid = ?)
   */
   $stmt = mysqli_prepare($conn, "UPDATE tbl_biodata
-                                SET enim = ?, enamalengkap = ?, etempatlahir = ?, etanggallahir = ?, 
-                                    ehobi = ?, epasangan = ?, epekerjaan = ?, 
-                                    enamaorangtua = ?, enamakakak = ?, enamaadik = ? 
+                                SET ekodedosen     = ?, 
+                                    enamadosen     = ?, 
+                                    ealamatrumah   = ?, 
+                                    etanggaljadidosen = ?, 
+                                    ejjadosen      = ?, 
+                                    ehomebaseprodi = ?, 
+                                    enomorhp       = ?, 
+                                    enamapasangan  = ?, 
+                                    enamaanak      = ?, 
+                                    ebidangilmudosen = ?
                                 WHERE eid = ?");
   if (!$stmt) {
     #jika gagal prepare, kirim pesan error (tanpa detail sensitif)
-    $_SESSION['flash_error_biodata'] = 'Terjadi kesalahan sistem (prepare gagal).';
-    redirect_ke('bioedit.php?eid='. (int)$eid);
+    $_SESSION['flash_error'] = 'Terjadi kesalahan sistem (prepare gagal).';
+    redirect_ke('bioedit.php?cid='. (int)$eid);
   }
 
   #bind parameter dan eksekusi (s = string, i = integer)
-  mysqli_stmt_bind_param($stmt, "ssssssssssi",    
-    $nim,
-    $namalengkap,
-    $tempatlahir,
-    $tanggallahir,
-    $hobi,
-    $pasangan,
-    $pekerjaan,
-    $namaorangtua,
-    $namakakak,
-    $namaadik,
-    $eid);
+mysqli_stmt_bind_param($stmt, "ssssssssssi", 
+    $kodeDosen, $namaDosen, $alamatRumah, $tanggalJadi, $jja, 
+    $homebaseProdi, $nomorHp, $namaPasangan, $namaAnak, $bidangIlmu, $eid);
+
 
   if (mysqli_stmt_execute($stmt)) { #jika berhasil, kosongkan old value
-    unset($_SESSION['oldata']);
+    unset($_SESSION['old']);
     /*
       Redirect balik ke read.php dan tampilkan info sukses.
     */
-    $_SESSION['flash_sukses_biodata'] = 'Terima kasih, data Anda sudah diperbaharui.';
+    $_SESSION['flash_sukses'] = 'Terima kasih, data Anda sudah diperbaharui.';
     redirect_ke('bioread.php'); #pola PRG: kembali ke data dan exit()
   } else { #jika gagal, simpan kembali old value dan tampilkan error umum
-    $_SESSION['oldata'] = [
-    'nim'            => $nim,
-    'namalengkap'    => $namalengkap,
-    'tempatlahir'    => $tempatlahir,
-    'tanggallahir'   => $tanggallahir,
-    'hobi'           => $hobi,
-    'pasangan'       => $pasangan,
-    'pekerjaan'      => $pekerjaan,
-    'namaorangtua'   => $namaorangtua,
-    'namakakak'      => $namakakak,
-    'namaadik'       => $namaadik
-    ];
-    $_SESSION['flash_error_biodata'] = 'Data gagal diperbaharui. Silakan coba lagi.';
-    redirect_ke('bioedit.php?eid='. (int)$eid);
+    $_SESSION['old'] = [
+    'txtkodedosen'   => $kodeDosen,
+    'txtnamadosen'   => $namaDosen,
+    'txtalamatrumah' => $alamatRumah,
+    'txttanggaldosen'=> $tanggalJadi,
+    'txtjja'         => $jja,
+    'txtprodi'       => $homebaseProdi,
+    'txtnomorhp'     => $nomorHp,
+    'txtnamapasangan' => $namaPasangan,
+    'txtnamaanak'    => $namaAnak,
+    'txtbidangilmu'  => $bidangIlmu,
+    'txtCaptcha'     => $captcha
+  ];
+    $_SESSION['flash_error'] = 'Data gagal diperbaharui. Silakan coba lagi.';
+    redirect_ke('bioedit.php?cid='. (int)$eid);
   }
   #tutup statement
   mysqli_stmt_close($stmt);

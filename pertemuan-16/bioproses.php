@@ -1,130 +1,161 @@
-    <?php
-    session_start();
-    require __DIR__ . './koneksi.php';
-    require_once __DIR__ . '/fungsi.php';
+<?php
+session_start();
+require __DIR__ . './koneksi.php';
+require_once __DIR__ . '/fungsi.php';
 
-    // Cek method POST
-    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-        $_SESSION['flash_error_biodata'] = 'Akses tidak valid.';
-        redirect_ke('index.php#biodata');
-    }
+#cek method form, hanya izinkan POST
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+  $_SESSION['flash_error'] = 'Akses tidak valid.';
+  redirect_ke('index.php#biodata');
+}
 
-    // Ambil dan bersihkan nilai dari form
-    $kodedosen        = bersihkan($_POST['txtKodeDosen'] ?? '');
-    $namadosen        = bersihkan($_POST['txtNmDosen'] ?? '');
-    $alamatrumah      = bersihkan($_POST['txtAlRmh'] ?? '');
-    $tanggaljadidosen = bersihkan($_POST['txtTglDosen'] ?? '');
-    $jjadosen         = bersihkan($_POST['txtJJA'] ?? '');
-    $homebaseprodi    = bersihkan($_POST['txtProdi'] ?? '');
-    $nomorhp          = bersihkan($_POST['txtNoHP'] ?? '');
-    $namapasangan     = bersihkan($_POST['txNamaPasangan'] ?? '');
-    $namaanak         = bersihkan($_POST['txtNmAnak'] ?? '');
-    $namakakak        = bersihkan($_POST['txtNmKakak'] ?? '');
-    $bidangilmudosen  = bersihkan($_POST['txtBidangIlmu'] ?? '');
+#ambil dan bersihkan nilai dari form
+  $kodeDosen = bersihkan($_POST['txtkodedosen'] ?? '');
+  $namaDosen     = bersihkan($_POST['txtnamadosen'] ?? '');
+  $alamatRumah   = bersihkan($_POST['txtalamatrumah'] ?? '');
+  $tanggalJadi   = bersihkan($_POST['txttanggaldosen'] ?? '');
+  $jja           = bersihkan($_POST['txtjja'] ?? '');
+  $homebaseProdi = bersihkan($_POST['txtprodi'] ?? '');
+  $nomorHp       = bersihkan($_POST['txtnomorhp'] ?? '');
+  $namaPasangan  = bersihkan($_POST['txtnamapasangan'] ?? '');
+  $namaAnak      = bersihkan($_POST['txtnamaanak'] ?? '');
+  $bidangIlmu    = bersihkan($_POST['txtbidangilmu'] ?? '');
+  $captcha       = bersihkan($_POST['txtCaptcha'] ?? '');
 
-    // Validasi sederhana
-    $errors = [];
+#Validasi sederhana
+$errors = []; // array untuk menampung semua error
 
-    if ($kodedosen === '') $errors[] = 'Kode Dosen wajib diisi.';
-    if ($namadosen === '') $errors[] = 'Nama Dosen wajib diisi.';
-    elseif (mb_strlen($namadosen) < 3) $errors[] = 'Nama Dosen minimal 3 karakter.';
-    if ($alamatrumah === '') $errors[] = 'Alamat Rumah wajib diisi.';
-    if ($tanggaljadidosen === '') $errors[] = 'Tanggal Jadi Dosen wajib diisi.';
-    if ($jjadosen === '') $errors[] = 'JJA Dosen wajib diisi.';
-    if ($homebaseprodi === '') $errors[] = 'Homebase Prodi wajib diisi.';
-    if ($nomorhp === '') $errors[] = 'Nomor HP wajib diisi.';
-    if ($namapasangan === '') $errors[] = 'Nama Pasangan wajib diisi.';
-    if ($namaanak === '') $errors[] = 'Nama Anak wajib diisi.';
-    if ($bidangilmudosen === '') $errors[] = 'Bidang Ilmu Dosen wajib diisi.';
+// Validasi masing-masing field
+if ($kodeDosen === '') {
+    $errors[] = 'Nama Dosen wajib diisi.';
+}
+if ($namaDosen === '') {
+    $errors[] = 'Nama Dosen wajib diisi.';
+}
 
-    // Jika ada error, simpan old value dan redirect
-    if (!empty($errors)) {
-  $_SESSION['oldata'] = [
-      'txtKodeDosen'   => $kodedosen,
-      'txtNmDosen'     => $namadosen,
-      'txtAlRmh'       => $alamatrumah,
-      'txtTglDosen'    => $tanggaljadidosen,
-      'txtJJA'         => $jjadosen,
-      'txtProdi'       => $homebaseprodi,
-      'txtNoHP'        => $nomorhp,
-      'txNamaPasangan' => $namapasangan,
-      'txtNmAnak'      => $namaanak,
-      'txtNmKakak'     => $namakakak,
-      'txtBidangIlmu'  => $bidangilmudosen
-  ];
+if ($alamatRumah === '') {
+    $errors[] = 'Alamat Rumah wajib diisi.';
+}
 
+if ($tanggalJadi === '') {
+    $errors[] = 'Tanggal Jadi Dosen wajib diisi.';
+}
 
-        $_SESSION['flash_error_biodata'] = implode('<br>', $errors);
-        redirect_ke('index.php#biodata');
-    }
+if ($jja === '') {
+    $errors[] = 'JJA Dosen wajib diisi.';
+}
 
-    // Insert ke database
-  $sql = $sql = "INSERT INTO tbl_biodata
-(ekodedosen, enamadosen, ealamatrumah, etanggaljadidosen, ejjadosen, ehomebaseprodi, enomorhp, enamapasangan, enamaanak, enamakakak, ebidangilmudosen, ecreatedat)
-VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
-;
+if ($homebaseProdi === '') {
+    $errors[] = 'Homebase Prodi wajib diisi.';
+}
 
+if ($nomorHp === '') {
+    $errors[] = 'Nomor HP wajib diisi.';
+}
 
-    $stmt = mysqli_prepare($conn, $sql);
-    if (!$stmt) {
-        $_SESSION['flash_error_biodata'] = 'Terjadi kesalahan sistem (prepare gagal).';
-        redirect_ke('index.php#biodata');
-    }
+if ($namaPasangan === '') {
+    $errors[] = 'Nama Pasangan wajib diisi.';
+}
 
-    // Bind dan execute
-    mysqli_stmt_bind_param($stmt, "ssssssssssss", 
-        $kodedosen,
-        $namadosen,
-        $alamatrumah,
-        $tanggaljadidosen,
-        $jjadosen,
-        $homebaseprodi,
-        $nomorhp,
-        $namapasangan,
-        $namaanak,
-        $namakakak,
-        $bidangilmudosen
-    );
+if ($namaAnak === '') {
+    $errors[] = 'Nama Anak wajib diisi.';
+}
 
-    if (mysqli_stmt_execute($stmt)) {
-        unset($_SESSION['oldata']);
-        $_SESSION['flash_sukses_biodata'] = 'Terima kasih, data Anda sudah tersimpan.';
-    } else {
-    $_SESSION['oldata'] = [
-      'txtKodeDosen'   => $kodedosen,
-      'txtNmDosen'     => $namadosen,
-      'txtAlRmh'       => $alamatrumah,
-      'txtTglDosen'    => $tanggaljadidosen,
-      'txtJJA'         => $jjadosen,
-      'txtProdi'       => $homebaseprodi,
-      'txtNoHP'        => $nomorhp,
-      'txNamaPasangan' => $namapasangan,
-      'txtNmAnak'      => $namaanak,
-      'txtNmKakak'     => $namakakak,
-      'txtBidangIlmu'  => $bidangilmudosen
-  ];
+if ($bidangIlmu === '') {
+    $errors[] = 'Bidang Ilmu Dosen wajib diisi.';
+}
+
+if ($captcha === '') {
+    $errors[] = 'Captcha wajib diisi.';
+} elseif ($captcha !== "5") {
+    $errors[] = 'Jawaban captcha salah.';
+}
 
 
-        $_SESSION['flash_error_biodata'] = 'Data gagal disimpan. Silakan coba lagi.';
-    }
 
-    // Simpan data untuk ditampilkan di #about
-    $arrBiodata = [
-      "kodedos" => $_POST["txtKodeDosen"] ?? "",
-      "nama" => $_POST["txtNmDosen"] ?? "",
-      "alamat" => $_POST["txtAlRmh"] ?? "",
-      "tanggal" => $_POST["txtTglDosen"] ?? "",
-      "jja" => $_POST["txtJJA"] ?? "",
-      "prodi" => $_POST["txtProdi"] ?? "",
-      "nohp" => $_POST["txtNoHp"] ?? "",
-      "pasangan" => $_POST["txNamaPasangan"] ?? "",
-      "anak" => $_POST["txtNmAnak"] ?? "",
-      "ilmu" => $_POST["txtBidangIlmu"] ?? ""
-    ];
-    $_SESSION["biodata"] = $arrBiodata;
+/*
+kondisi di bawah ini hanya dikerjakan jika ada error, 
+simpan nilai lama dan pesan error, lalu redirect (konsep PRG)
+*/
+if (!empty($errors)) {
+ $_SESSION['old'] = [
+  'txtkodedosen'   => $kodeDosen,
+  'txtnamadosen'   => $namaDosen,
+  'txtalamatrumah' => $alamatRumah,
+  'txttanggaldosen'=> $tanggalJadi,
+  'txtjja'         => $jja,
+  'txtprodi'       => $homebaseProdi,
+  'txtnomorhp'     => $nomorHp,
+  'txtnamapasangan' => $namaPasangan,
+  'txtnamaanak'    => $namaAnak,
+  'txtbidangilmu'  => $bidangIlmu,
+  'txtCaptcha'     => $captcha
+];
 
-    mysqli_stmt_close($stmt);
+  $_SESSION['flash_error'] = implode('<br>', $errors);
+  redirect_ke('index.php#biodata');
+}
 
-    // Redirect kembali ke form
-    header("Location: index.php#biodata");
-    exit;
+#menyiapkan query INSERT dengan prepared statement
+$sql = "INSERT INTO tbl_biodata (
+    ekodedosen, enamadosen, ealamatrumah, etanggaljadidosen, ejjadosen,
+    ehomebaseprodi, enomorhp, enamapasangan, enamaanak, ebidangilmudosen
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+
+$stmt = mysqli_prepare($conn, $sql);
+
+if (!$stmt) {
+  #jika gagal prepare, kirim pesan error ke pengguna (tanpa detail sensitif)
+  $_SESSION['flash_error'] = 'Terjadi kesalahan sistem (prepare gagal).';
+  redirect_ke('index.php#biodata');
+}
+#bind parameter dan eksekusi (s = string)
+mysqli_stmt_bind_param($stmt, 
+        "ssssssssss", 
+        $kodeDosen, $namaDosen, $alamatRumah, $tanggalJadi, $jja, 
+        $homebaseProdi, $nomorHp, $namaPasangan, $namaAnak, $bidangIlmu);
+
+
+if (mysqli_stmt_execute($stmt)) { #jika berhasil, kosongkan old value, beri pesan sukses
+  unset($_SESSION['old']);
+  $_SESSION['flash_sukses'] = 'Terima kasih, data Anda sudah tersimpan.';
+  redirect_ke('index.php#biodata'); #pola PRG: kembali ke form / halaman home
+} else { #jika gagal, simpan kembali old value dan tampilkan error umum
+$_SESSION['old'] = [
+  'txtkodedosen'   => $kodeDosen,
+  'txtnamadosen'   => $namaDosen,
+  'txtalamatrumah' => $alamatRumah,
+  'txttanggaldosen'=> $tanggalJadi,
+  'txtjja'         => $jja,
+  'txtprodi'       => $homebaseProdi,
+  'txtnomorhp'     => $nomorHp,
+  'txtnamapasangan' => $namaPasangan,
+  'txtnamaanak'    => $namaAnak,
+  'txtbidangilmu'  => $bidangIlmu,
+  'txtCaptcha'     => $captcha
+];
+
+  $_SESSION['flash_error'] = 'Data gagal disimpan. Silakan coba lagi.';
+  redirect_ke('index.php#biodata');
+}
+#tutup statement
+mysqli_stmt_close($stmt);
+
+$arrBiodata = [
+    "kodedos" => $_POST["txtkodedosen"] ?? "",
+    "nama"    => $_POST["txtnamadosen"] ?? "",
+    "alamat"  => $_POST["txtalamatrumah"] ?? "",
+    "tanggal" => $_POST["txttanggaldosen"] ?? "",
+    "jja"     => $_POST["txtjja"] ?? "",
+    "prodi"   => $_POST["txtprodi"] ?? "",
+    "nohp"    => $_POST["txtnomorhp"] ?? "",
+    "pasangan"=> $_POST["txnamapasangan"] ?? "",
+    "anak"    => $_POST["txtnamaanak"] ?? "",
+    "ilmu"    => $_POST["txtbidangilmu"] ?? ""
+];
+
+$_SESSION["biodata"] = $arrBiodata;
+
+header("location: index.php#about");
+?>

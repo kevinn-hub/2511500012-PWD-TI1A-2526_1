@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 28, 2026 at 05:08 AM
+-- Generation Time: Jan 28, 2026 at 08:46 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -33,16 +33,29 @@ CREATE TABLE `tbl_biodata` (
   `eid` int(11) NOT NULL,
   `ekodedosen` varchar(20) DEFAULT NULL,
   `enamadosen` varchar(100) DEFAULT NULL,
-  `ealamatrumah` varchar(150) DEFAULT NULL,
+  `ealamatrumah` varchar(100) DEFAULT NULL,
   `etanggaljadidosen` varchar(50) DEFAULT NULL,
   `ejjadosen` varchar(50) DEFAULT NULL,
   `ehomebaseprodi` varchar(100) DEFAULT NULL,
-  `enomorhp` varchar(20) DEFAULT NULL,
+  `enomorhp` varchar(100) DEFAULT NULL,
   `enamapasangan` varchar(100) DEFAULT NULL,
-  `enamakakak` varchar(100) DEFAULT NULL,
+  `enamaanak` varchar(100) DEFAULT NULL,
   `ebidangilmudosen` varchar(100) DEFAULT NULL,
   `ecreatedat` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_biodata`
+--
+
+INSERT INTO `tbl_biodata` (`eid`, `ekodedosen`, `enamadosen`, `ealamatrumah`, `etanggaljadidosen`, `ejjadosen`, `ehomebaseprodi`, `enomorhp`, `enamapasangan`, `enamaanak`, `ebidangilmudosen`, `ecreatedat`) VALUES
+(1, 'dfdfdf', 'dfd', 'f', 'df', 'df', 'df', 'd', '3', 'df', 'df', '2026-01-28 07:27:53'),
+(2, 'rerere', 'rerererer', 'ererere', 'rerer', 'er', 'ere', 'rer', 'e', 're', 're', '2026-01-28 07:28:53'),
+(3, 'ggfg', 'gdg', 'dg', 'dgd', 'gd', 'gd', 'd', 'gd', 'g', 'dg', '2026-01-28 07:34:48'),
+(4, 'fdfdfddf', 'df', 'df', 'dfd', 'f', 'df', 'df', 'df', 'd', 'fd', '2026-01-28 07:45:50'),
+(5, 'rgfgfgf', 'gfgfg', 'gf', 'gf', 'gf', 'g', 'fgf', 'g', 'fg', 'fg', '2026-01-28 07:45:57'),
+(6, 'fgf', 'pak bambang', 'fgfgfg', 'fgfgf', 'g', 'fg', 'fg', 'f', 'gf', 'gfg', '2026-01-28 07:46:02'),
+(7, 'dfd', 'fdf', 'dfdf', 'df', 'd', 'fd', 'fd', 'f', 'df', 'd', '2026-01-28 08:27:18');
 
 -- --------------------------------------------------------
 
@@ -63,9 +76,13 @@ CREATE TABLE `tbl_tamu` (
 --
 
 INSERT INTO `tbl_tamu` (`cid`, `cnama`, `cemail`, `cpesan`, `dcreated_at`) VALUES
-(20, 'Nur Faddddd', 'a@gmail.com', 'sadadas faedfasd', '2025-12-24 12:21:52'),
-(21, 'nicolas lim', 'sada@i.com', 'kskakds a da', '2025-12-24 12:22:04'),
-(22, 'fdfd', 'dkdf2@gmail.com', 'dfdfdfdfdfdfdf', '2026-01-28 10:16:08');
+(1, 'dfdfdf', 'musang@gmail.comdf', 'fffffffffffffffffffff\r\ndfdfdfd', '2026-01-28 14:13:17'),
+(2, 'sfdfdfdfd', 'fdfdf@gmail.com', 'dfdfdfdfdfdf', '2026-01-28 15:27:47'),
+(3, 'fdfdfdf', 'aku@gmail.com', 'fdfdfdfdfdfdf', '2026-01-28 15:31:07'),
+(4, 'dfdfdfd', 'musang@gmail.com', 'fdfdfdfdfddfdf', '2026-01-28 15:34:34'),
+(5, 'cvcvcv', 'musang@gmail.com', 'fdfdfdfdfdfdfd', '2026-01-28 15:34:52'),
+(6, 'ggd', 'musang@gmail.com', 'fdfdfdfdf\r\nfddf', '2026-01-28 15:35:38'),
+(7, 'fdfdfdf', 'musang@gmail.com', 'fdfdfdfdfdfdfd', '2026-01-28 15:36:10');
 
 --
 -- Indexes for dumped tables
@@ -91,13 +108,13 @@ ALTER TABLE `tbl_tamu`
 -- AUTO_INCREMENT for table `tbl_biodata`
 --
 ALTER TABLE `tbl_biodata`
-  MODIFY `eid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `eid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_tamu`
 --
 ALTER TABLE `tbl_tamu`
-  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

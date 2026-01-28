@@ -1,7 +1,8 @@
-# pertemuan-16
+# pertemuan-16
 
-hari ini rabu 7 Januari 2026 saya belajar:
+Nama : Leonard Kevin Fernando <br>
+Nim : 2511500012 <br>
 
+Hari ini , UAS rabu 28 januari 2026 saya mengerjakan :
 <ol>
-<li>mengecopy dan paste file bahan uas ke file pertemuan-16</li>
-<li>mengecopy dan paste file read.php dan rename menjadi bioread.php</li>
+<li>Mengunduh bahan ajar melalui elearning dan di extrak ke dalam foler pertemuan 16 <li>

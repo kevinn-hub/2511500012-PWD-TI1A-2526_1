@@ -11,10 +11,10 @@
 ?>
 
 <?php
-  $flash_sukses = $_SESSION['flash_sukses_biodata'] ?? ''; #jika query sukses
-  $flash_error  = $_SESSION['flash_error_biodata'] ?? ''; #jika ada error
+  $flash_sukses = $_SESSION['flash_sukses'] ?? ''; #jika query sukses
+  $flash_error  = $_SESSION['flash_error'] ?? ''; #jika ada error
   #bersihkan session ini
-  unset($_SESSION['flash_sukses_biodata'], $_SESSION['flash_error_biodata']); 
+  unset($_SESSION['flash_sukses'], $_SESSION['flash_error']); 
 ?>
 
 <?php if (!empty($flash_sukses)): ?>
@@ -44,7 +44,7 @@
     <th>homebase prodi</th>
     <th>nomor hp</th>
     <th>nama pasangan</th>
-    <th>nama kakak</th>
+    <th>nama anak</th>
     <th>bidang ilmu dosen</th>
     <th>Created At</th>
   </tr>
@@ -53,8 +53,8 @@
     <tr>
       <td><?= $i++ ?></td>
       <td>
-        <a href="edit.php?eid=<?= (int)$row['eid']; ?>">Edit</a>
-        <a onclick="return confirm('Hapus <?= htmlspecialchars($row['cnama']); ?>?')" href="proses_delete.php?cid=<?= (int)$row['cid']; ?>">Delete</a>
+        <a href="bioedit.php?eid=<?= (int)$row['eid']; ?>">Edit</a>
+        <a onclick="return confirm('Hapus <?= htmlspecialchars($row['ekodedosen']); ?>?')" href="biodelete.php?eid=<?= (int)$row['eid']; ?>">Delete</a>
       </td>
       <td><?= $row['eid']; ?></td>
       <td><?= htmlspecialchars($row['ekodedosen']); ?></td>
@@ -65,9 +65,9 @@
       <td><?= htmlspecialchars($row['ehomebaseprodi']); ?></td>
       <td><?= htmlspecialchars($row['enomorhp']); ?></td>
       <td><?= htmlspecialchars($row['enamapasangan']); ?></td>
-      <td><?= htmlspecialchars($row['enamakakak']); ?></td>
+      <td><?= htmlspecialchars($row['enamaanak']); ?></td>
       <td><?= htmlspecialchars($row['ebidangilmudosen']); ?></td>
-      <td><?= htmlspecialchars($row['ecreatedat']); ?></td>
+      <td><?= formatTanggal(htmlspecialchars($row['ecreatedat'])); ?></td>
     </tr>
   <?php endwhile; ?>
 </table>
