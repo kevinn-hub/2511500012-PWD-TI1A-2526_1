@@ -120,7 +120,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
     "anak" => $_POST["txtNmAnak"] ?? "",
     "ilmu" => $_POST["txtBidangIlmu"] ?? ""
   ];
-  $_SESSION["biodata"] = $arrDosen;
+  $_SESSION["biodata"] = $arrBiodata;
 
   mysqli_stmt_close($stmt);
 
