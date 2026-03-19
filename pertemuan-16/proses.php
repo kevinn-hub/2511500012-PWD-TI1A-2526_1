@@ -53,7 +53,7 @@ kondisi di bawah ini hanya dikerjakan jika ada error,
 simpan nilai lama dan pesan error, lalu redirect (konsep PRG)
 */
 if (!empty($errors)) {
-  $_SESSION['old'] = [
+  $_SESSION['oldata'] = [
     'nama'  => $nama,
     'email' => $email,
     'pesan' => $pesan,

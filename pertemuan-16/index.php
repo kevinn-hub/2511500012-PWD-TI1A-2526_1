@@ -174,25 +174,25 @@ require_once __DIR__ . '/fungsi.php';
         <label for="txtNama"><span>Nama:</span>
           <input type="text" id="txtNama" name="txtNama" placeholder="Masukkan nama"
             required autocomplete="name"
-            value="<?= isset($old['nama']) ? htmlspecialchars($old['nama']) : '' ?>">
+            value="<?= isset($oldata['nama']) ? htmlspecialchars($oldata['nama']) : '' ?>">
         </label>
 
         <label for="txtEmail"><span>Email:</span>
           <input type="email" id="txtEmail" name="txtEmail" placeholder="Masukkan email"
             required autocomplete="email"
-            value="<?= isset($old['email']) ? htmlspecialchars($old['email']) : '' ?>">
+            value="<?= isset($oldata['email']) ? htmlspecialchars($oldata['email']) : '' ?>">
         </label>
 
         <label for="txtPesan"><span>Pesan Anda:</span>
           <textarea id="txtPesan" name="txtPesan" rows="4" placeholder="Tulis pesan anda..."
-            required><?= isset($old['pesan']) ? htmlspecialchars($old['pesan']) : '' ?></textarea>
+            required><?= isset($oldata['pesan']) ? htmlspecialchars($oldata['pesan']) : '' ?></textarea>
           <small id="charCount">0/200 karakter</small>
         </label>
 
         <label for="txtCaptcha"><span>Captcha 2 + 3 = ?</span>
           <input type="number" id="txtCaptcha" name="txtCaptcha" placeholder="Jawab Pertanyaan..."
             required
-            value="<?= isset($old['captcha']) ? htmlspecialchars($old['captcha']) : '' ?>">
+            value="<?= isset($oldata['captcha']) ? htmlspecialchars($oldata['captcha']) : '' ?>">
         </label>
 
         <button type=" submit">Kirim</button>

@@ -86,7 +86,7 @@ if (!empty($errors)) {
   'txtjja'         => $jja,
   'txtprodi'       => $homebaseProdi,
   'txtnomorhp'     => $nomorHp,
-  'txtnamapasangan' => $namaPasangan,
+  'txtnamapasangan'=> $namaPasangan,
   'txtnamaanak'    => $namaAnak,
   'txtbidangilmu'  => $bidangIlmu,
   'txtCaptcha'     => $captcha
@@ -130,7 +130,7 @@ $_SESSION['old'] = [
   'txtjja'         => $jja,
   'txtprodi'       => $homebaseProdi,
   'txtnomorhp'     => $nomorHp,
-  'txtnamapasangan' => $namaPasangan,
+  'txtnamapasangan'=> $namaPasangan,
   'txtnamaanak'    => $namaAnak,
   'txtbidangilmu'  => $bidangIlmu,
   'txtCaptcha'     => $captcha
